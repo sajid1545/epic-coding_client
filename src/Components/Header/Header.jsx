@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.jpg';
-import { FaBars, FaCrosshairs, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
+import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
