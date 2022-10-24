@@ -14,7 +14,7 @@ const Header = () => {
 							Epic! Coding
 						</span>
 					</a>
-					<ul class="flex items-center hidden space-x-8 lg:flex">
+					<ul class=" items-center hidden space-x-8 lg:flex">
 						<li>
 							<a
 								href="/"
