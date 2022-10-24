@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.jpg';
 import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
+// import './header.css'
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ const Header = () => {
 	}
 
 	return (
-		<div className="">
+		<div>
 			<div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
 				<div className="relative flex items-center justify-between">
 					<a href="/" aria-label="Company" title="Company" className="inline-flex items-center">
@@ -23,21 +24,18 @@ const Header = () => {
 					</a>
 					<ul className=" items-center hidden space-x-8 lg:flex">
 						<li>
-							<NavLink
-								to=""
-								title="Courses"
-								className={`font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 ${(
-									isActive
-								) => (isActive ? 'text-red-700' : undefined)}
-								`}>
-								Courses
-							</NavLink>
+							
+								<NavLink
+									className={({ isActive }) => (isActive ? 'active' : undefined)}
+									to={`/courses`}>
+									Courses
+								</NavLink>
+							
 						</li>
 						<li>
 							<NavLink
-								to=""
-								title="FAQ"
-								className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
+								className={({ isActive }) => (isActive ? 'active' : undefined)}
+								to={`/`}>
 								FAQ
 							</NavLink>
 						</li>
@@ -45,7 +43,7 @@ const Header = () => {
 							<NavLink
 								to=""
 								title="Blog"
-								className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
+								className="font-medium tracking-wide  transition-colors duration-200 hover:text-deep-purple-accent-400">
 								Blog
 							</NavLink>
 						</li>
