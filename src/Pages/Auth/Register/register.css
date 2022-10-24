@@ -1,0 +1,8 @@
+.register-comp {
+    background-image: url('../../../assets/register.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: whitesmoke;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-import service1 from '../../assets/home-1.jpg';
-import service2 from '../../assets/home-2.jpg';
-import service3 from '../../assets/home-3.jpg';
+import service1 from '../../assets/h-1.png';
+import service2 from '../../assets/h-2.png';
+import service3 from '../../assets/h-3.png';
 
 const OurServices = () => {
 	return (
@@ -21,7 +21,7 @@ const OurServices = () => {
 			</div>
 			<div className="card rounded-none  ">
 				<figure className="p-4 ">
-					<img src={service3} alt="Services" className="rounded-tr-3xl rounded-bl-3xl h-[350px]" />
+					<img src={service2} alt="Services" className="rounded-tr-3xl rounded-bl-3xl h-[350px]" />
 				</figure>
 				<div className="card-body text-center md:text-left">
 					<h2 className="font-bold text-3xl">Free Classes</h2>
@@ -33,7 +33,7 @@ const OurServices = () => {
 			</div>
 			<div className="card rounded-none  ">
 				<figure className="p-4 ">
-					<img src={service1} alt="Services" className="rounded-tr-3xl rounded-bl-3xl h-[350px]" />
+					<img src={service3} alt="Services" className="rounded-tr-3xl rounded-bl-3xl h-[350px]" />
 				</figure>
 				<div className="card-body text-center md:text-left">
 					<h2 className="font-bold text-3xl">Course Methodology</h2>
