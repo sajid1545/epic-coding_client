@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const RightSideNav = () => {
+const RightSideNav = ({course}) => {
     return (
         <div>
-            <h1>Right side</h1>
+            <Link>
+                <button className='px-8 py-2 bg-gray-400 mb-4 rounded-lg text-lg'>{ course.title }</button>
+            </Link>
         </div>
     );
 };
