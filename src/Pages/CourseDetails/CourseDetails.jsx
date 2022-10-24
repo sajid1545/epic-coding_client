@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
-import { FaDownload } from 'react-icons/fa';
+import { FaChessKnight, FaDownload, FaOpencart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { CourseContext } from './../../Contexts/CourseProvider';
 
 const CourseDetails = () => {
 	const { selectedCourse } = useContext(CourseContext);
 
-	const { title, picture, ratings, about,overview1,overview2,overview3 } = selectedCourse;
+	const { title, picture, ratings, about, overview1, overview2, overview3 } = selectedCourse;
 
 	return (
 		<div>
-			<div className="max-w-xl mx-auto p-8 rounded-xl shadow-md dark:bg-gray-900 dark:text-gray-100">
+			<div className="max-w-xl mx-auto p-8 rounded-xl shadow-md dark:bg-gray-900 dark:text-gray-100 my-10">
 				<div className="flex justify-between pb-4 border-bottom">
 					<div className="flex items-center">
 						<h1 className="mb-0 capitalize dark:text-gray-100">Photography</h1>
@@ -34,14 +35,12 @@ const CourseDetails = () => {
 					<div>
 						<div class="px-4 py-5 border-b rounded-t sm:px-6">
 							<div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-md">
-								<ul class="divide-y divide-gray-200">
+								<ul class="divide-y divide-gray-200  ">
 									<li>
 										<div class="block hover:bg-gray-50 dark:hover:bg-gray-900">
-											<div class="px-4 py-4 sm:px-6">
+											<div class="px-4 py-4 sm:px-6 ">
 												<div class="flex items-center justify-between">
-													<p class="text-md text-gray-700 dark:text-white ">
-														{overview1}
-													</p>
+													<p class="text-md text-gray-700 dark:text-white ">{overview1}</p>
 												</div>
 											</div>
 										</div>
@@ -50,9 +49,7 @@ const CourseDetails = () => {
 										<div class="block hover:bg-gray-50 dark:hover:bg-gray-900">
 											<div class="px-4 py-4 sm:px-6">
 												<div class="flex items-center justify-between">
-													<p class="text-md text-gray-700 dark:text-white ">
-                                                    {overview2}
-													</p>
+													<p class="text-md text-gray-700 dark:text-white ">{overview2}</p>
 												</div>
 											</div>
 										</div>
@@ -61,9 +58,7 @@ const CourseDetails = () => {
 										<div class="block hover:bg-gray-50 dark:hover:bg-gray-900">
 											<div class="px-4 py-4 sm:px-6">
 												<div class="flex items-center justify-between">
-													<p class="text-md text-gray-700 dark:text-white ">
-                                                    {overview3}
-													</p>
+													<p class="text-md text-gray-700 dark:text-white ">{overview3}</p>
 												</div>
 											</div>
 										</div>
@@ -71,6 +66,14 @@ const CourseDetails = () => {
 								</ul>
 							</div>
 						</div>
+						<Link to={'/checkOut'}>
+							<button
+								type="button"
+								class="py-3 px-12 mt-5 bg-violet-600 hover:bg-violet-800 focus:ring-violet-500 focus:ring-offset-violet-200 text-white  transition ease-in duration-200 text-center  font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg flex justify-center items-center gap-5 mx-auto text-xl ">
+								Get premium access
+								<FaChessKnight />
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>
