@@ -2,11 +2,15 @@ import React, { useContext } from 'react';
 import { FaChessKnight, FaDownload, FaOpencart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { CourseContext } from './../../Contexts/CourseProvider';
+import ReactDOM from 'react-dom';
+import Pdf from 'react-to-pdf';
 
 const CourseDetails = () => {
 	const { selectedCourse } = useContext(CourseContext);
 
-	const { title, picture, ratings, about, overview1, overview2, overview3 } = selectedCourse;
+	const ref = React.createRef();
+
+	const { title, picture, ratings, about, overview1, overview2, overview3, price } = selectedCourse;
 
 	return (
 		<div>
@@ -15,12 +19,17 @@ const CourseDetails = () => {
 					<div className="flex items-center">
 						<h1 className="mb-0 capitalize dark:text-gray-100">Photography</h1>
 					</div>
-					<button>
-						<FaDownload />
-					</button>
+
+					<Pdf targetRef={ref} filename="course-details.pdf">
+						{({ toPdf }) => (
+							<button onClick={toPdf}>
+								<FaDownload />
+							</button>
+						)}
+					</Pdf>
 				</div>
-				<div className="space-y-4">
-					<div className="space-y-2">
+				<div ref={ref} className="space-y-7 ">
+					<div >
 						<img
 							src={picture}
 							alt=""
@@ -29,7 +38,10 @@ const CourseDetails = () => {
 					</div>
 					<div className="space-y-2">
 						<h3 className="text-xl font-semibold dark:text-violet-400">{title}</h3>
-						<p className="leading-snug dark:text-gray-400">{about}</p>
+						<h3 className="text-xl  text-left font-semibold dark:text-violet-400">
+							Price : ${price}
+						</h3>
+						<p className="leading-snug  dark:text-gray-400">{about}</p>
 					</div>
 
 					<div>

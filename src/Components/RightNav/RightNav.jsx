@@ -2,8 +2,8 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const LeftSideNav = ({ course }) => {
-	const { title, picture, ratings, about,id } = course;
+const RightNav = ({ course,handleSelectedCourse }) => {
+	const { title, picture, ratings, about, id } = course;
 
 	return (
 		<div>
@@ -23,6 +23,7 @@ const LeftSideNav = ({ course }) => {
 					</div>
 					<Link to={`/courses/:${id}`}>
 						<button
+							onClick={() => handleSelectedCourse(course)}
 							type="button"
 							className="flex items-center justify-center w-full p-3 font-semibold  rounded-md bg-violet-400 hover:bg-violet-600 duration-500 text-gray-900">
 							More Details
@@ -34,4 +35,4 @@ const LeftSideNav = ({ course }) => {
 	);
 };
 
-export default LeftSideNav;
+export default RightNav;

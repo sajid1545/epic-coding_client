@@ -8,6 +8,8 @@ import toast from 'react-hot-toast';
 const Register = () => {
 	const { createUser, updateUserProfile, githubSignIn, googleSignIn } = useContext(AuthContext);
 
+	
+
 	const [errors, setErrors] = useState({
 		password: '',
 		general: '',
@@ -148,24 +150,7 @@ const Register = () => {
 					</button>
 					{errors.general && <p className="text-center text-red-600">{errors.general}</p>}
 				</form>
-				<div className="flex items-center pt-4 space-x-1">
-					<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-					<p className="px-3 text-sm dark:text-gray-400">Login with social accounts</p>
-					<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-				</div>
-				<div className="flex justify-center space-x-4">
-					<button
-						onClick={handleGoogleSignIn}
-						className="p-3 rounded-sm hover:scale-125 duration-500">
-						<FaGoogle className="w-7 h-7 fill-current" />
-					</button>
-
-					<button
-						onClick={handleGithubSignIn}
-						className="p-3 rounded-sm hover:scale-125 duration-500 ">
-						<FaGithub className="w-7 h-7 fill-current" />
-					</button>
-				</div>
+				
 				<p className="text-xs text-center sm:px-6 dark:text-gray-400">
 					Already have an account?
 					<Link to={'/login'} className="underline dark:text-gray-100 ml-2">

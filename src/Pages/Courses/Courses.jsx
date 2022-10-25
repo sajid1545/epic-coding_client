@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
-import LeftSideNav from '../../Components/LeftSideNav/LeftSideNav';
-import RightSideNav from '../../Components/RightSideNav/RightSideNav';
+// import LeftNav from '../../Components/RightNav/RightNav';
+// import RightNav from '../../Components/LeftNav/LeftNav';
 import { CourseContext } from './../../Contexts/CourseProvider';
+import RightNav from './../../Components/RightNav/RightNav';
+import LeftNav from './../../Components/LeftNav/LeftNav';
 
 const Courses = () => {
 	const { courses, handleSelectedCourse } = useContext(CourseContext);
@@ -12,11 +14,7 @@ const Courses = () => {
 				<h2 className="text-3xl font-bold my-4">Course Titles</h2>
 				<div className="space-y-5">
 					{courses.map((course) => (
-						<RightSideNav
-							key={course.id}
-							course={course}
-							handleSelectedCourse={handleSelectedCourse}
-						/>
+						<LeftNav key={course.id} course={course} handleSelectedCourse={handleSelectedCourse} />
 					))}
 				</div>
 			</div>
@@ -26,7 +24,7 @@ const Courses = () => {
 
 				<div className="grid lg:grid-cols-2 grid-cols-1 gap-8 my-5">
 					{courses.map((course) => (
-						<LeftSideNav key={course.id} course={course} />
+						<RightNav key={course.id} course={course} handleSelectedCourse={handleSelectedCourse} />
 					))}
 				</div>
 			</div>

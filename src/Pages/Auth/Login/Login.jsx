@@ -51,6 +51,9 @@ const Login = () => {
 				const user = result.user;
 				console.log(user);
 				toast.success('Success');
+				if (user?.uid) {
+					navigate(from, { replace: true });
+				}
 			})
 			.catch((e) => {
 				toast.error(e.message);
@@ -65,6 +68,8 @@ const Login = () => {
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
+				// navigate(from, { replace: true });
+
 				toast.success('Success');
 			})
 			.catch((e) => {

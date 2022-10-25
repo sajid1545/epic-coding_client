@@ -5,7 +5,13 @@ export const CourseContext = createContext();
 const CourseProvider = ({ children }) => {
     const [courses, setCourses] = useState([]);
     
-    const [selectedCourse, setSelectedCourse] = useState([]);
+	const [selectedCourse, setSelectedCourse] = useState([]);
+	
+	const [rightSideCourse,setRightSideCourse] = useState([])
+
+	const handleRightSideCourse = (courseSelected) => {
+		console.log(courseSelected);
+	}
 
 	const handleSelectedCourse = (choosedCourse) => {
 		console.log(choosedCourse);
@@ -18,7 +24,7 @@ const CourseProvider = ({ children }) => {
 			.then((data) => setCourses(data));
 	}, []);
 
-	const courseInfo = { courses,handleSelectedCourse,selectedCourse };
+	const courseInfo = { courses,handleSelectedCourse,selectedCourse,handleRightSideCourse };
 
 	return <CourseContext.Provider value={courseInfo}>{children}</CourseContext.Provider>;
 };
