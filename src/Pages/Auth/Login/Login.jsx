@@ -10,13 +10,13 @@ const Login = () => {
 
 	const [errors, setError] = useState('');
 
-	let navigate = useNavigate();
-	let location = useLocation();
+	const navigate = useNavigate();
+	const location = useLocation();
 
-	let from = location.state?.from?.pathname || '/';
+	const from = location.state?.from?.pathname || '/';
 
 	useEffect(() => {
-		if (user && user.uid) {
+		if (user) {
 			navigate(from, { replace: true });
 		}
 	}, [user, navigate]);
@@ -34,29 +34,25 @@ const Login = () => {
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
-				navigate(from, { replace: true });
 				form.reset();
 				toast.success('Success');
+				navigate(from, { replace: true });
 			})
 			.catch((e) => {
 				toast.error(e.message);
 				setError(e.message);
 			});
-		// .finally(() => {
-		// 	setLoading(false);
-		// });
 	};
 
 	// Github signIn Authentication
 
 	const handleGithubSignIn = () => {
-		// e.preventDefault();
 		githubSignIn()
 			.then((result) => {
 				const user = result.user;
-				navigate(from, { replace: true });
 				console.log(user);
 				toast.success('success');
+				navigate(from, { replace: true });
 			})
 			.catch((e) => {
 				toast.error(e.message);
@@ -70,9 +66,9 @@ const Login = () => {
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
-				navigate(from, { replace: true });
 
 				toast.success('Success');
+				navigate(from, { replace: true });
 			})
 			.catch((e) => {
 				toast.error(e.message);

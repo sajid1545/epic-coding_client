@@ -1,37 +1,48 @@
 import React, { useContext } from 'react';
 import { FaChessKnight, FaDownload, FaOpencart, FaStar, FaStarHalf } from 'react-icons/fa';
-import { createBrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CourseContext } from './../../Contexts/CourseProvider';
 import Pdf from 'react-to-pdf';
-// import ReactImageMagnify from 'react-image-magnify';
+import ReactImageMagnify from 'react-image-magnify';
 
 const CourseDetails = () => {
 	const { selectedCourse } = useContext(CourseContext);
 
 	const ref = React.createRef();
 
-	const { title, picture, ratings, about, overview1, overview2, overview3, price, instructor } =
-		selectedCourse;
+	const {
+		title,
+		picture,
+		ratings,
+		about,
+		overview1,
+		overview2,
+		overview3,
+		price,
+		instructor,
+		topic,
+	} = selectedCourse;
 
 	return (
 		<div>
 			<div className="max-w-xl mx-auto p-8 rounded-xl shadow-md dark:bg-gray-900 dark:text-gray-100 my-10">
 				<div className="flex justify-between pb-4 border-bottom">
 					<div className="flex items-center">
-						<h1 className="mb-0 capitalize dark:text-gray-100">Photography</h1>
+						<span className="px-4 py-1  text-base rounded-full text-purple-900 border border-purple-600 bg-purple-200 ">
+							{topic}
+						</span>
 					</div>
 
 					<Pdf targetRef={ref} filename="course-details.pdf">
 						{({ toPdf }) => (
-							<button onClick={toPdf}>
+							<button className="tooltip tooltip-secondary" data-tip="Download" onClick={toPdf}>
 								<FaDownload />
 							</button>
 						)}
 					</Pdf>
 				</div>
-				<div ref={ref}  className="space-y-7 ">
-					{/* ref={ref}  */}
-					{/* <div>
+				<div ref={ref} className="space-y-7 ">
+					<div>
 						<ReactImageMagnify
 							{...{
 								smallImage: {
@@ -46,8 +57,8 @@ const CourseDetails = () => {
 								},
 							}}
 						/>
-					</div> */}
-					<img src={picture} alt="" />
+					</div>
+					{/* <img src={picture} alt="" /> */}
 					<div className="space-y-2">
 						<h3 className="text-xl font-semibold dark:text-violet-400">{title}</h3>
 
@@ -61,7 +72,9 @@ const CourseDetails = () => {
 							<h3 className="text-xl   font-semibold dark:text-violet-400">Price : ${price}</h3>
 							<div className="flex items-center gap-2 justify-center">
 								{ratings > 4 ? (
-									<div className="flex items-center gap-2 justify-center">
+									<div
+										data-tip={`${ratings}`}
+										className="tooltip flex items-center gap-2 justify-center">
 										<FaStar className="text-xl text-yellow-500" />
 										<FaStar className="text-xl text-yellow-500" />
 										<FaStar className="text-xl text-yellow-500" />
@@ -69,7 +82,9 @@ const CourseDetails = () => {
 										<FaStar className="text-xl text-yellow-500" />
 									</div>
 								) : (
-									<div className="flex items-center gap-2 justify-center">
+									<div
+										data-tip={`${ratings}`}
+										className="tooltip flex items-center gap-2 justify-center">
 										<FaStar className="text-xl text-yellow-500" />
 										<FaStar className="text-xl text-yellow-500" />
 										<FaStar className="text-xl text-yellow-500" />
