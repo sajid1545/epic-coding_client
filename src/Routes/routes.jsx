@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
 				element: <CourseDetails />,
 			},
 			{
-				path: '/checkOut',
+				path: '/checkOut/:id',
 				element: (
 					<PrivateRoutes>
 						<CheckOutCourse />

@@ -34,8 +34,8 @@ const CheckOutCourse = () => {
 			) : (
 				<div className='mt-10'>
 					<h1 className="text-xl font-bold">Course Id :{id}</h1>
-					<h1 className="text-4xl font-bold">{title}</h1>
-					<img src={picture} alt="" className="w-[30%] mx-auto" />
+					<h1 className="text-4xl font-bold mb-5">{title}</h1>
+					<img src={picture} alt="" className="w-[30%] mx-auto rounded-lg shadow-lg shadow-purple-700" />
 					<button
 						type="button"
 						onClick={handleSuccesMeassage}
