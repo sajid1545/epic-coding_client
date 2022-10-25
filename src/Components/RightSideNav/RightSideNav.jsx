@@ -7,7 +7,7 @@ const RightSideNav = ({ course, handleSelectedCourse }) => {
 			<Link to={`/courses/${course.id}`}>
 				<button
 					onClick={() => handleSelectedCourse(course)}
-					className="px-8 py-2 bg-purple-100 hover:bg-purple-500 duration-500 hover:text-white  mb-4 rounded-xl text-lg shadow-md font-bold shadow-purple-500">
+					className="px-8 py-4 bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900  duration-500 text-white hover:shadow-lg hover:shadow-purple-600  mb-4 rounded-md text-lg shadow-purple-600 font-bold ">
 					{course.title}
 				</button>
 			</Link>

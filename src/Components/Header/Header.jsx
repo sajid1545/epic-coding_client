@@ -16,7 +16,7 @@ const Header = () => {
 	}
 
 	return (
-		<div className="mb-[280px] lg:mb-0">
+		<div className="mb-[210px] lg:mb-2 ">
 			<div className="px-4 py-5 mx-auto  md:px-24 lg:px-10">
 				<div className="relative flex items-center justify-between">
 					<Link to="/" className="inline-flex items-center">
@@ -32,15 +32,10 @@ const Header = () => {
 							</NavLink>
 						</li>
 						<li>
-							<NavLink className={({ isActive }) => (isActive ? 'active' : undefined)} to={`/`}>
-								FAQ
-							</NavLink>
+							<NavLink className="font-medium ">FAQ</NavLink>
 						</li>
 						<li>
-							<NavLink
-								to=""
-								title="Blog"
-								className="font-medium tracking-wide  transition-colors duration-200 hover:text-deep-purple-accent-400">
+							<NavLink to="" title="Blog" className="font-medium ">
 								Blog
 							</NavLink>
 						</li>
@@ -95,16 +90,12 @@ const Header = () => {
 								<div className="p-5 bg-white border rounded shadow-sm">
 									<div className="flex items-center justify-between mb-4">
 										<div>
-											<a
-												href="/"
-												aria-label="Company"
-												title="Company"
-												className="inline-flex items-center">
+											<Link to="/" className="inline-flex items-center">
 												<img src={logo} alt="" className="w-10 h-10 rounded-full" />
 												<span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
 													Epic! Coding
 												</span>
-											</a>
+											</Link>
 										</div>
 										<div>
 											<button
@@ -124,17 +115,10 @@ const Header = () => {
 												</NavLink>
 											</li>
 											<li>
-												<NavLink
-													className={({ isActive }) => (isActive ? 'active' : undefined)}
-													to={`/`}>
-													FAQ
-												</NavLink>
+												<NavLink className="font-medium ">FAQ</NavLink>
 											</li>
 											<li>
-												<NavLink
-													to=""
-													title="Blog"
-													className="font-medium tracking-wide  transition-colors duration-200 hover:text-deep-purple-accent-400">
+												<NavLink to="" title="Blog" className="font-medium ">
 													Blog
 												</NavLink>
 											</li>

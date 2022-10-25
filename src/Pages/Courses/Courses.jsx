@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import LeftSideNav from '../../Components/LeftSideNav/LeftSideNav';
 import RightSideNav from '../../Components/RightSideNav/RightSideNav';
 import { CourseContext } from './../../Contexts/CourseProvider';
@@ -8,9 +8,9 @@ const Courses = () => {
 
 	return (
 		<div className="grid grid-cols-12 gap-5 mt-5">
-            <div className="right-side lg:col-span-4 col-span-12">
-                <h2 className='text-3xl font-bold my-4'>Course Titles</h2>
-				<div className='space-y-5'>
+			<div className="right-side lg:col-span-4 col-span-12">
+				<h2 className="text-3xl font-bold my-4">Course Titles</h2>
+				<div className="space-y-5">
 					{courses.map((course) => (
 						<RightSideNav
 							key={course.id}

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './register.css';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
@@ -6,8 +6,24 @@ import { AuthContext } from '../../../Contexts/UserContextProvider';
 import toast from 'react-hot-toast';
 
 const Register = () => {
-	const { createUser, updateUserProfile } = useContext(AuthContext);
+	const { createUser, updateUserProfile, githubSignIn } = useContext(AuthContext);
 
+	const [errors, setErrors] = useState({
+		password: '',
+		general: '',
+	});
+
+	// password validation
+	const handlePasswordChange = (e) => {
+		const password = e.target.value;
+		if (password.length < 6) {
+			setErrors({ ...errors, password: 'Must be at least 6 characters' });
+		} else {
+			setErrors('');
+		}
+	};
+
+	// onsubmit user will create account
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let form = e.target;
@@ -30,6 +46,23 @@ const Register = () => {
 				toast.error(err.message);
 			});
 	};
+
+	// Github sign Authentication
+
+	const handleGithubSignIn = (e) => {
+		e.preventDefault();
+		githubSignIn()
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				toast.success('Success');
+			})
+			.catch((e) => {
+				toast.error(e.message);
+			});
+	};
+
+	// functio to update user name and profile picture
 
 	const handleUpdateUserProfile = (name, photoURL) => {
 		const profile = {
@@ -88,15 +121,17 @@ const Register = () => {
 						<input
 							type="password"
 							name="password"
-							id="password"
+							onChange={handlePasswordChange}
 							required
 							placeholder="Password"
 							className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 						/>
 					</div>
+					{errors.password && <p className="text-red-600">{errors.password}</p>}
 					<button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400 hover:bg-violet-700 duration-500 hover:text-white">
 						Register
 					</button>
+					{errors.general && <p className="text-center text-red-600">{errors.general}</p>}
 				</form>
 				<div className="flex items-center pt-4 space-x-1">
 					<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
@@ -108,7 +143,9 @@ const Register = () => {
 						<FaGoogle className="w-7 h-7 fill-current" />
 					</button>
 
-					<button className="p-3 rounded-sm hover:scale-125 duration-500">
+					<button
+						onClick={handleGithubSignIn}
+						className="p-3 rounded-sm hover:scale-125 duration-500">
 						<FaGithub className="w-7 h-7 fill-current" />
 					</button>
 				</div>
