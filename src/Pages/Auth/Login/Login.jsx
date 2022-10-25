@@ -1,14 +1,23 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { AuthContext } from './../../../Contexts/UserContextProvider';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-	const { signIn, githubSignIn, googleSignIn } = useContext(AuthContext);
+	const { signIn, githubSignIn, googleSignIn, user } = useContext(AuthContext);
 
 	const [errors, setError] = useState('');
+	let location = useLocation();
+	let from = location.state?.from?.pathname || '/';
+	let navigate = useNavigate();
+
+	useEffect(() => {
+		if (user && user.email) {
+			navigate(from, { replace: true });
+		}
+	}, [user, navigate]);
 
 	// users can login if they have already created an account
 
@@ -23,6 +32,7 @@ const Login = () => {
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
+				navigate(from, { replace: true });
 				form.reset();
 				toast.success('Success');
 			})

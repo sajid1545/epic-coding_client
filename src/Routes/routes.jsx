@@ -8,6 +8,7 @@ import Register from './../Pages/Auth/Register/Register';
 import Login from './../Pages/Auth/Login/Login';
 import FAQ from './../Pages/FAQ/FAQ';
 import Blogs from './../Pages/Blogs/Blogs';
+import PrivateRoutes from './PrivateRoutes';
 
 export const router = createBrowserRouter([
 	{
@@ -28,7 +29,11 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/checkOut',
-				element: <CheckOutCourse />,
+				element: (
+					<PrivateRoutes>
+						<CheckOutCourse />
+					</PrivateRoutes>
+				),
 			},
 			{
 				path: '/FAQ',

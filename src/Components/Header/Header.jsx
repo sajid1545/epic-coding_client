@@ -51,7 +51,7 @@ const Header = () => {
 
 						<li>
 							{user?.uid ? (
-								<Link to={'register'}>
+								<Link>
 									<button
 										onClick={logOut}
 										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
@@ -60,7 +60,7 @@ const Header = () => {
 									</button>
 								</Link>
 							) : (
-								<Link to={'login'}>
+								<Link to={'/login'}>
 									<button
 										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
 										title="Login">
@@ -136,7 +136,7 @@ const Header = () => {
 
 											<li>
 												{user?.uid ? (
-													<Link to={'register'}>
+													<Link>
 														<button
 															onClick={logOut}
 															className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"

@@ -73,7 +73,8 @@ const UserContextProvider = ({ children }) => {
 		signIn,
 		logOut,
 		githubSignIn,
-		googleSignIn,
+        googleSignIn,
+        loading
 	};
 
 	return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

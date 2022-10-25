@@ -33,32 +33,32 @@ const CourseDetails = () => {
 					</div>
 
 					<div>
-						<div class="px-4 py-5 border-b rounded-t sm:px-6">
-							<div class="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-md">
-								<ul class="divide-y divide-gray-200  ">
+						<div className="px-4 py-5 border-b rounded-t sm:px-6">
+							<div className="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-md">
+								<ul className="divide-y divide-gray-200  ">
 									<li>
-										<div class="block hover:bg-gray-50 dark:hover:bg-gray-900">
-											<div class="px-4 py-4 sm:px-6 ">
-												<div class="flex items-center justify-between">
-													<p class="text-md text-gray-700 dark:text-white ">{overview1}</p>
+										<div className="block hover:bg-gray-50 dark:hover:bg-gray-900">
+											<div className="px-4 py-4 sm:px-6 ">
+												<div className="flex items-center justify-between">
+													<p className="text-md text-gray-700 dark:text-white ">{overview1}</p>
 												</div>
 											</div>
 										</div>
 									</li>
 									<li>
-										<div class="block hover:bg-gray-50 dark:hover:bg-gray-900">
-											<div class="px-4 py-4 sm:px-6">
-												<div class="flex items-center justify-between">
-													<p class="text-md text-gray-700 dark:text-white ">{overview2}</p>
+										<div className="block hover:bg-gray-50 dark:hover:bg-gray-900">
+											<div className="px-4 py-4 sm:px-6">
+												<div className="flex items-center justify-between">
+													<p className="text-md text-gray-700 dark:text-white ">{overview2}</p>
 												</div>
 											</div>
 										</div>
 									</li>
 									<li>
-										<div class="block hover:bg-gray-50 dark:hover:bg-gray-900">
-											<div class="px-4 py-4 sm:px-6">
-												<div class="flex items-center justify-between">
-													<p class="text-md text-gray-700 dark:text-white ">{overview3}</p>
+										<div className="block hover:bg-gray-50 dark:hover:bg-gray-900">
+											<div className="px-4 py-4 sm:px-6">
+												<div className="flex items-center justify-between">
+													<p className="text-md text-gray-700 dark:text-white ">{overview3}</p>
 												</div>
 											</div>
 										</div>
@@ -69,7 +69,7 @@ const CourseDetails = () => {
 						<Link to={'/checkOut'}>
 							<button
 								type="button"
-								class="py-3 px-12 mt-5 bg-violet-600 hover:bg-violet-800 focus:ring-violet-500 focus:ring-offset-violet-200 text-white  transition ease-in duration-200 text-center  font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg flex justify-center items-center gap-5 mx-auto text-xl ">
+								className="py-3 px-12 mt-5 bg-violet-600 hover:bg-violet-800 focus:ring-violet-500 focus:ring-offset-violet-200 text-white  transition ease-in duration-200 text-center  font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg flex justify-center items-center gap-5 mx-auto text-xl ">
 								Get premium access
 								<FaChessKnight />
 							</button>
