@@ -2,12 +2,11 @@ import React from 'react';
 import { useRouteError, Link } from 'react-router-dom';
 
 const ErrorPage = () => {
-
-    const error = useRouteError()
+	const error = useRouteError();
 
 	return (
 		<div>
-			<div className="grid h-screen place-content-center bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900">
+			<div className="grid h-screen place-content-center bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white">
 				<div className="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -32,11 +31,13 @@ const ErrorPage = () => {
 						Page {error.statusText}
 					</h1>
 
-					<Link to="/" className="group relative inline-block focus:outline-none focus:ring ">
-						<span className="absolute inset-0 translate-x-0 translate-y-0 bg-red-600 transition-transform group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
+					<Link
+						to="/courses"
+						className="group relative inline-block focus:outline-none focus:ring ">
+						<span className="absolute inset-0 translate-x-0 translate-y-0 bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 transition-transform group-hover:translate-y-1.5 group-hover:translate-x-1.5"></span>
 
-						<span className="relative inline-block border-2 border-red-600  px-8 py-3 text-sm font-bold uppercase tracking-widest">
-							Go Back to Topics
+						<span className="relative inline-block border-2   px-8 py-3 text-sm font-bold uppercase tracking-widest">
+							Go to Courses
 						</span>
 					</Link>
 				</div>

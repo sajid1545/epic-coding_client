@@ -16,7 +16,7 @@ const Login = () => {
 	let from = location.state?.from?.pathname || '/';
 
 	useEffect(() => {
-		if (user) {
+		if (user && user.uid) {
 			navigate(from, { replace: true });
 		}
 	}, [user, navigate]);
@@ -41,15 +41,15 @@ const Login = () => {
 			.catch((e) => {
 				toast.error(e.message);
 				setError(e.message);
-			})
-			.finally(() => {
-				setLoading(false);
 			});
+		// .finally(() => {
+		// 	setLoading(false);
+		// });
 	};
 
 	// Github signIn Authentication
 
-	const handleGithubSignIn = (e) => {
+	const handleGithubSignIn = () => {
 		// e.preventDefault();
 		githubSignIn()
 			.then((result) => {
