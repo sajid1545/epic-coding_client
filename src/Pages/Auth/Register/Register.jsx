@@ -1,12 +1,11 @@
 import React, { useContext, useState } from 'react';
 import './register.css';
-import { Link } from 'react-router-dom';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link} from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/UserContextProvider';
 import toast from 'react-hot-toast';
 
 const Register = () => {
-	const { createUser, updateUserProfile, githubSignIn, googleSignIn } = useContext(AuthContext);
+	const { createUser, updateUserProfile } = useContext(AuthContext);
 
 	const [errors, setErrors] = useState({
 		password: '',
@@ -121,8 +120,8 @@ const Register = () => {
 
 				<p className="text-xs text-center sm:px-6 dark:text-gray-400">
 					Already have an account?
-					<Link to='/login' className="underline dark:text-gray-100 ml-2">
-						<>Login</>
+					<Link to="/login" className="underline dark:text-gray-100">
+						Login
 					</Link>
 				</p>
 			</div>

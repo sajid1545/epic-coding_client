@@ -12,8 +12,6 @@ const CourseDetails = () => {
 
 	const { title, picture, ratings, about, overview1, overview2, overview3, price, instructor } =
 		selectedCourse;
-	
-	
 
 	return (
 		<div>
@@ -31,8 +29,8 @@ const CourseDetails = () => {
 						)}
 					</Pdf>
 				</div>
-				<div className="space-y-7 ">
-				{/* ref={ref}  */}
+				<div ref={ref}  className="space-y-7 ">
+					{/* ref={ref}  */}
 					{/* <div>
 						<ReactImageMagnify
 							{...{
@@ -79,7 +77,6 @@ const CourseDetails = () => {
 									</div>
 								)}
 							</div>
-						
 						</div>
 					</div>
 

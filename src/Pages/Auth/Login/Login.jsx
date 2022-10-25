@@ -16,10 +16,10 @@ const Login = () => {
 	let from = location.state?.from?.pathname || '/';
 
 	useEffect(() => {
-		if (user && user.email) {
+		if (user) {
 			navigate(from, { replace: true });
 		}
-	}, [user, navigate, from]);
+	}, [user, navigate]);
 
 	// users can login if they have already created an account
 
