@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import './Login.css';
-import { AuthContext } from './../../../Contexts/UserContextProvider';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from './../../../Contexts/UserContextProvider';
+import './Login.css';
 
 const Login = () => {
-	const { signIn, githubSignIn, googleSignIn, user, setLoading } = useContext(AuthContext);
+	const { signIn, githubSignIn, googleSignIn, forgotPassword, user } = useContext(AuthContext);
 
 	const [errors, setError] = useState('');
 
@@ -14,12 +14,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || '/';
 
-	console.log(from);
-	// useEffect(() => {
-	// 	if (user) {
-	// 		navigate(from, { replace: true });
-	// 	}
-	// }, [user, navigate]);
+	// const [userEmail, setUserEmail] = useState('');
 
 	// users can login if they have already created an account
 	navigate(from, { replace: true });
@@ -75,6 +70,21 @@ const Login = () => {
 			});
 	};
 
+	// const handleUserEmailBlur = (e) => {
+	// 	let email = e.target.value;
+	// 	setUserEmail(email);
+	// };
+
+	// const handleForgotPassword = (e) => {
+	// 	forgotPassword(userEmail)
+	// 		.then(() => {
+	// 			toast.success('email sent successfully');
+	// 		})
+	// 		.catch((e) => {
+	// 			toast.error(e.message);
+	// 		});
+	// };
+
 	return (
 		<div className="mb-5 login-comp p-10 md:p-20">
 			<div className="w-full max-w-md mx-auto p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 ">
@@ -97,6 +107,7 @@ const Login = () => {
 								type="email"
 								name="email"
 								placeholder="Email"
+								// onBlur={handleUserEmailBlur}
 								required
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
@@ -106,7 +117,9 @@ const Login = () => {
 								<label htmlFor="password" className="text-sm">
 									Password
 								</label>
-								<button className="text-xs hover:underline dark:text-gray-400">
+								<button
+									// onClick={handleForgotPassword}
+									className="text-xs hover:underline dark:text-gray-400">
 									Forgot password?
 								</button>
 							</div>
