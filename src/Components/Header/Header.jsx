@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.jpg';
-import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
+import { FaBars, FaMoon, FaSun, FaTimes, FaUserAlt } from 'react-icons/fa';
 // import './header.css'
 import { AuthContext } from './../../Contexts/UserContextProvider';
 
@@ -16,7 +16,7 @@ const Header = () => {
 	}
 
 	return (
-		<div>
+		<div className="mb-[280px] lg:mb-0">
 			<div className="px-4 py-5 mx-auto  md:px-24 lg:px-10">
 				<div className="relative flex items-center justify-between">
 					<Link to="/" className="inline-flex items-center">
@@ -62,12 +62,24 @@ const Header = () => {
 							) : (
 								<Link to={'login'}>
 									<button
-										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
 										title="Login">
 										Login
 									</button>
 								</Link>
 							)}
+						</li>
+
+						<li>
+							<Link>
+								{user?.photoURL ? (
+									<div className="tooltip tooltip-bottom tooltip-info" data-tip={user?.displayName}>
+										<img src={user.photoURL} alt="" className="w-12 h-12 rounded-full " />
+									</div>
+								) : (
+									<FaUserAlt className="w-6 h-6" />
+								)}
+							</Link>
 						</li>
 					</ul>
 					<div className="lg:hidden">
@@ -107,49 +119,45 @@ const Header = () => {
 									<nav>
 										<ul className="space-y-4">
 											<li>
-												<a
-													href="/"
-													aria-label="Our product"
-													title="Our product"
-													className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
-													Product
-												</a>
+												<NavLink className={`font-medium`} to={`/courses`}>
+													Courses
+												</NavLink>
 											</li>
 											<li>
-												<a
-													href="/"
-													aria-label="Our product"
-													title="Our product"
-													className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
-													Features
-												</a>
+												<NavLink
+													className={({ isActive }) => (isActive ? 'active' : undefined)}
+													to={`/`}>
+													FAQ
+												</NavLink>
 											</li>
 											<li>
-												<a
-													href="/"
-													aria-label="Product pricing"
-													title="Product pricing"
-													className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
-													Pricing
-												</a>
+												<NavLink
+													to=""
+													title="Blog"
+													className="font-medium tracking-wide  transition-colors duration-200 hover:text-deep-purple-accent-400">
+													Blog
+												</NavLink>
 											</li>
+
 											<li>
-												<a
-													href="/"
-													aria-label="About us"
-													title="About us"
-													className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">
-													About us
-												</a>
-											</li>
-											<li>
-												<a
-													href="/"
-													className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-													aria-label="Sign up"
-													title="Sign up">
-													Sign up
-												</a>
+												{user?.uid ? (
+													<Link to={'register'}>
+														<button
+															onClick={logOut}
+															className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+															title="Register">
+															Log Out
+														</button>
+													</Link>
+												) : (
+													<Link to={'login'}>
+														<button
+															className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+															title="Login">
+															Login
+														</button>
+													</Link>
+												)}
 											</li>
 										</ul>
 									</nav>
