@@ -7,11 +7,11 @@ const RightNav = ({ course,handleSelectedCourse }) => {
 
 	return (
 		<div>
-			<div className="max-w-sm mx-auto h-full  shadow-lg shadow-purple-400 bg-gray-900 text-gray-100 rounded-xl border-4 border-purple-800">
+			<div className="max-w-sm mx-auto h-full  shadow-lg shadow-purple-400 bg-gray-900 text-gray-100 rounded-xl border-4 border-purple-800 p-4">
 				<img
 					src={picture}
 					alt="topics"
-					className="object-cover object-center w-full rounded-t-md h-[300px] p-4 bg-gray-500"
+					className="object-cover object-center w-full rounded-t-md h-[300px] "
 				/>
 				<div className="flex flex-col justify-between p-6 space-y-8">
 					<div className="space-y-2">

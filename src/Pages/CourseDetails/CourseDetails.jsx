@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
-import { FaChessKnight, FaDownload, FaOpencart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaChessKnight, FaDownload, FaOpencart, FaStar, FaStarHalf } from 'react-icons/fa';
+import { createBrowserRouter, Link } from 'react-router-dom';
 import { CourseContext } from './../../Contexts/CourseProvider';
-import ReactDOM from 'react-dom';
 import Pdf from 'react-to-pdf';
+// import ReactImageMagnify from 'react-image-magnify';
 
 const CourseDetails = () => {
 	const { selectedCourse } = useContext(CourseContext);
 
 	const ref = React.createRef();
 
-	const { title, picture, ratings, about, overview1, overview2, overview3, price } = selectedCourse;
+	const { title, picture, ratings, about, overview1, overview2, overview3, price, instructor } =
+		selectedCourse;
+	
+	
 
 	return (
 		<div>
@@ -28,20 +31,56 @@ const CourseDetails = () => {
 						)}
 					</Pdf>
 				</div>
-				<div ref={ref} className="space-y-7 ">
-					<div >
-						<img
-							src={picture}
-							alt=""
-							className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
+				<div className="space-y-7 ">
+				{/* ref={ref}  */}
+					{/* <div>
+						<ReactImageMagnify
+							{...{
+								smallImage: {
+									alt: 'courses',
+									isFluidWidth: true,
+									src: `${picture}`,
+								},
+								largeImage: {
+									src: `${picture}`,
+									width: 1200,
+									height: 1800,
+								},
+							}}
 						/>
-					</div>
+					</div> */}
+					<img src={picture} alt="" />
 					<div className="space-y-2">
 						<h3 className="text-xl font-semibold dark:text-violet-400">{title}</h3>
-						<h3 className="text-xl  text-left font-semibold dark:text-violet-400">
-							Price : ${price}
-						</h3>
+
 						<p className="leading-snug  dark:text-gray-400">{about}</p>
+						<div className="">
+							<h1 className="text-xl mt-3">
+								Instructor : <span className="text-green-600">{instructor}</span>
+							</h1>
+						</div>
+						<div className="flex justify-center gap-5 flex-col">
+							<h3 className="text-xl   font-semibold dark:text-violet-400">Price : ${price}</h3>
+							<div className="flex items-center gap-2 justify-center">
+								{ratings > 4 ? (
+									<div className="flex items-center gap-2 justify-center">
+										<FaStar className="text-xl text-yellow-500" />
+										<FaStar className="text-xl text-yellow-500" />
+										<FaStar className="text-xl text-yellow-500" />
+										<FaStar className="text-xl text-yellow-500" />
+										<FaStar className="text-xl text-yellow-500" />
+									</div>
+								) : (
+									<div className="flex items-center gap-2 justify-center">
+										<FaStar className="text-xl text-yellow-500" />
+										<FaStar className="text-xl text-yellow-500" />
+										<FaStar className="text-xl text-yellow-500" />
+										<FaStar className="text-xl text-yellow-500" />
+									</div>
+								)}
+							</div>
+						
+						</div>
 					</div>
 
 					<div>

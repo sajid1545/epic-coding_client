@@ -74,7 +74,9 @@ const Header = () => {
 							<Link>
 								{user?.photoURL ? (
 									<div className="tooltip tooltip-bottom tooltip-info" data-tip={user?.displayName}>
-										<img src={user.photoURL} alt="" className="w-12 h-12 rounded-full " />
+										<div className="avatar online w-12 h-12">
+											<img src={user.photoURL} alt="" className=" rounded-full " />
+										</div>
 									</div>
 								) : (
 									<FaUserAlt className="w-6 h-6" />

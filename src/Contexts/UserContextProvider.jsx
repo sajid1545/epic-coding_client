@@ -63,6 +63,8 @@ const UserContextProvider = ({ children }) => {
 	};
 
 	const logOut = () => {
+		setLoading(true);
+
 		return signOut(auth);
 	};
 
@@ -74,7 +76,8 @@ const UserContextProvider = ({ children }) => {
 		logOut,
 		githubSignIn,
         googleSignIn,
-        loading
+		loading,
+		setLoading
 	};
 
 	return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

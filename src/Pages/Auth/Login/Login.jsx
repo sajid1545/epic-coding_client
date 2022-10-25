@@ -6,18 +6,20 @@ import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-	const { signIn, githubSignIn, googleSignIn, user } = useContext(AuthContext);
+	const { signIn, githubSignIn, googleSignIn, user, setLoading } = useContext(AuthContext);
 
 	const [errors, setError] = useState('');
-	let location = useLocation();
-	let from = location.state?.from?.pathname || '/';
+
 	let navigate = useNavigate();
+	let location = useLocation();
+
+	let from = location.state?.from?.pathname || '/';
 
 	useEffect(() => {
 		if (user && user.email) {
 			navigate(from, { replace: true });
 		}
-	}, [user, navigate]);
+	}, [user, navigate, from]);
 
 	// users can login if they have already created an account
 
@@ -39,21 +41,22 @@ const Login = () => {
 			.catch((e) => {
 				toast.error(e.message);
 				setError(e.message);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	};
 
 	// Github signIn Authentication
 
 	const handleGithubSignIn = (e) => {
-		e.preventDefault();
+		// e.preventDefault();
 		githubSignIn()
 			.then((result) => {
 				const user = result.user;
+				navigate(from, { replace: true });
 				console.log(user);
-				toast.success('Success');
-				if (user?.uid) {
-					navigate(from, { replace: true });
-				}
+				toast.success('success');
 			})
 			.catch((e) => {
 				toast.error(e.message);
@@ -62,13 +65,12 @@ const Login = () => {
 
 	// Google signIn Authentication
 
-	const handleGoogleSignIn = (e) => {
-		e.preventDefault();
+	const handleGoogleSignIn = () => {
 		googleSignIn()
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
-				// navigate(from, { replace: true });
+				navigate(from, { replace: true });
 
 				toast.success('Success');
 			})
@@ -130,21 +132,21 @@ const Login = () => {
 						<p className="px-3 dark:text-gray-400">OR</p>
 						<hr className="w-full dark:text-gray-400" />
 					</div>
-					<div className="my-6 space-y-4">
-						<button
-							onClick={handleGoogleSignIn}
-							className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
-							<FaGoogle className="w-5 h-5 " />
-							<p>Login with Google</p>
-						</button>
-						<button
-							onClick={handleGithubSignIn}
-							className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
-							<FaGithub className="w-6 h-6 " />
-							<p>Login with GitHub</p>
-						</button>
-					</div>
 				</form>
+				<div className="my-6 space-y-4">
+					<button
+						onClick={handleGoogleSignIn}
+						className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
+						<FaGoogle className="w-5 h-5 " />
+						<p>Login with Google</p>
+					</button>
+					<button
+						onClick={handleGithubSignIn}
+						className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
+						<FaGithub className="w-6 h-6 " />
+						<p>Login with GitHub</p>
+					</button>
+				</div>
 			</div>
 		</div>
 	);

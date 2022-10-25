@@ -8,8 +8,6 @@ import toast from 'react-hot-toast';
 const Register = () => {
 	const { createUser, updateUserProfile, githubSignIn, googleSignIn } = useContext(AuthContext);
 
-	
-
 	const [errors, setErrors] = useState({
 		password: '',
 		general: '',
@@ -46,36 +44,6 @@ const Register = () => {
 			.catch((err) => {
 				console.log(err);
 				toast.error(err.message);
-			});
-	};
-
-	// Github signIn Authentication
-
-	const handleGithubSignIn = (e) => {
-		e.preventDefault();
-		githubSignIn()
-			.then((result) => {
-				const user = result.user;
-				console.log(user);
-				toast.success('Success');
-			})
-			.catch((e) => {
-				toast.error(e.message);
-			});
-	};
-
-	// Google signIn Authentication
-
-	const handleGoogleSignIn = (e) => {
-		e.preventDefault();
-		googleSignIn()
-			.then((result) => {
-				const user = result.user;
-				console.log(user);
-				toast.success('Success');
-			})
-			.catch((e) => {
-				toast.error(e.message);
 			});
 	};
 
@@ -150,11 +118,11 @@ const Register = () => {
 					</button>
 					{errors.general && <p className="text-center text-red-600">{errors.general}</p>}
 				</form>
-				
+
 				<p className="text-xs text-center sm:px-6 dark:text-gray-400">
 					Already have an account?
-					<Link to={'/login'} className="underline dark:text-gray-100 ml-2">
-						Login
+					<Link to='/login' className="underline dark:text-gray-100 ml-2">
+						<>Login</>
 					</Link>
 				</p>
 			</div>
