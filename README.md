@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+#### App Title ---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Epic! Coding
 
-## Available Scripts
+## Live Site
 
-In the project directory, you can run:
+(https://assignment-10-epic-coding.firebaseapp.com/ “Epic! Coding”)
 
-### `npm start`
+#
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. This is an online education platform app for those who are interested in tech.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. In this app there are bunch of courses from which users can select their desired course..Users can see the name of instructor, ratings, picture and many more details.
 
-### `npm test`
+3. In this app the checkout page is protected, unless the user is signedIn, user can not view content of checkout page.Checkout page will contain details about the course user purchased
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. In this app user can sign in by Google , Github and by using email. User must register first with email and password if he/she wish to sign in using email.
 
-### `npm run build`
+5. Signed in user can see there profile picture in the top right corner of the navbar. While hovering over it username can be seen. While registering user can add a profile picture and update its name.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Packages and Technologies used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Taiwind CSS , daisyui (Taiwind component library)
+2. React router dom to route through components
+3. React (JS library)
+4. rect-to-pdf --> so that user can download course details in PDF format
+5. react-magnify-image ---> to zoom through the images (course images)
+6. react-hot-toast ---> to show a toast (success / error) when user signedIn or loggedOut
+7. sweet-alert-2 ---> instead of normal alert, sweet alert is used make an alert box more attractive and easier to design
+8. react-icons --> used as it is easier to work with
+9. react-loader-spinner --> more fancier than normal ones and easily customizable
+10. firebase-authentication ---> firebase allows users to register or login to the app
