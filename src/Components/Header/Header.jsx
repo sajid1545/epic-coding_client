@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.jpg';
 import { FaBars, FaMoon, FaSun, FaTimes, FaUserAlt } from 'react-icons/fa';
-// import './header.css'
+import './header.css';
 import { AuthContext } from './../../Contexts/UserContextProvider';
 
 const Header = () => {
@@ -27,15 +27,20 @@ const Header = () => {
 					</Link>
 					<ul className=" items-center hidden space-x-8 lg:flex">
 						<li>
-							<NavLink className={`font-medium`} to={`/courses`}>
+							<NavLink
+								className={`font-medium ${(isActive) => (isActive ? 'text-red-600' : undefined)}`}
+								to={`/courses`}>
 								Courses
 							</NavLink>
 						</li>
+
 						<li>
-							<NavLink className="font-medium ">FAQ</NavLink>
+							<NavLink to={'/FAQ'} className="font-medium ">
+								FAQ
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="" title="Blog" className="font-medium ">
+							<NavLink to="/blogs" title="Blog" className="font-medium ">
 								Blog
 							</NavLink>
 						</li>
@@ -110,15 +115,21 @@ const Header = () => {
 									<nav>
 										<ul className="space-y-4">
 											<li>
-												<NavLink className={`font-medium`} to={`/courses`}>
+												<NavLink
+													className={`font-medium ${(isActive) =>
+														isActive ? 'text-red-600' : undefined}`}
+													to={`/courses`}>
 													Courses
 												</NavLink>
 											</li>
+
 											<li>
-												<NavLink className="font-medium ">FAQ</NavLink>
+												<NavLink to={'/FAQ'} className="font-medium ">
+													FAQ
+												</NavLink>
 											</li>
 											<li>
-												<NavLink to="" title="Blog" className="font-medium ">
+												<NavLink to="/blogs" title="Blog" className="font-medium ">
 													Blog
 												</NavLink>
 											</li>

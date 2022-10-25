@@ -6,9 +6,11 @@ import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-	const { signIn, githubSignIn } = useContext(AuthContext);
+	const { signIn, githubSignIn, googleSignIn } = useContext(AuthContext);
 
 	const [errors, setError] = useState('');
+
+	// users can login if they have already created an account
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -30,8 +32,10 @@ const Login = () => {
 			});
 	};
 
+	// Github signIn Authentication
+
 	const handleGithubSignIn = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		githubSignIn()
 			.then((result) => {
 				const user = result.user;
@@ -40,7 +44,21 @@ const Login = () => {
 			})
 			.catch((e) => {
 				toast.error(e.message);
-				
+			});
+	};
+
+	// Google signIn Authentication
+
+	const handleGoogleSignIn = (e) => {
+		e.preventDefault();
+		googleSignIn()
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				toast.success('Success');
+			})
+			.catch((e) => {
+				toast.error(e.message);
 			});
 	};
 
@@ -98,11 +116,15 @@ const Login = () => {
 						<hr className="w-full dark:text-gray-400" />
 					</div>
 					<div className="my-6 space-y-4">
-						<button className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
+						<button
+							onClick={handleGoogleSignIn}
+							className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
 							<FaGoogle className="w-5 h-5 " />
 							<p>Login with Google</p>
 						</button>
-						<button onClick={handleGithubSignIn} className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
+						<button
+							onClick={handleGithubSignIn}
+							className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
 							<FaGithub className="w-6 h-6 " />
 							<p>Login with GitHub</p>
 						</button>

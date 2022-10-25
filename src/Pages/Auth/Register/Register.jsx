@@ -6,7 +6,7 @@ import { AuthContext } from '../../../Contexts/UserContextProvider';
 import toast from 'react-hot-toast';
 
 const Register = () => {
-	const { createUser, updateUserProfile, githubSignIn } = useContext(AuthContext);
+	const { createUser, updateUserProfile, githubSignIn, googleSignIn } = useContext(AuthContext);
 
 	const [errors, setErrors] = useState({
 		password: '',
@@ -23,7 +23,7 @@ const Register = () => {
 		}
 	};
 
-	// onsubmit user will create account
+	// onsubmit, user will create account
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let form = e.target;
@@ -47,7 +47,7 @@ const Register = () => {
 			});
 	};
 
-	// Github sign Authentication
+	// Github signIn Authentication
 
 	const handleGithubSignIn = (e) => {
 		e.preventDefault();
@@ -62,7 +62,22 @@ const Register = () => {
 			});
 	};
 
-	// functio to update user name and profile picture
+	// Google signIn Authentication
+
+	const handleGoogleSignIn = (e) => {
+		e.preventDefault();
+		googleSignIn()
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				toast.success('Success');
+			})
+			.catch((e) => {
+				toast.error(e.message);
+			});
+	};
+
+	// function to update user name and profile picture
 
 	const handleUpdateUserProfile = (name, photoURL) => {
 		const profile = {
@@ -139,13 +154,15 @@ const Register = () => {
 					<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
 				</div>
 				<div className="flex justify-center space-x-4">
-					<button className="p-3 rounded-sm hover:scale-125 duration-500">
+					<button
+						onClick={handleGoogleSignIn}
+						className="p-3 rounded-sm hover:scale-125 duration-500">
 						<FaGoogle className="w-7 h-7 fill-current" />
 					</button>
 
 					<button
 						onClick={handleGithubSignIn}
-						className="p-3 rounded-sm hover:scale-125 duration-500">
+						className="p-3 rounded-sm hover:scale-125 duration-500 ">
 						<FaGithub className="w-7 h-7 fill-current" />
 					</button>
 				</div>
