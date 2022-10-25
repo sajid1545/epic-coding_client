@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './register.css';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { AuthContext } from '../../../Contexts/UserContextProvider';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+	const { createUser, updateUserProfile } = useContext(AuthContext);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let form = e.target;
@@ -12,6 +16,30 @@ const Register = () => {
 		let email = form.email.value;
 		let password = form.password.value;
 		console.log(name, photoURL, email, password);
+
+		createUser(email, password)
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+				toast.success('Registered Successfully');
+				form.reset();
+				handleUpdateUserProfile(name, photoURL);
+			})
+			.catch((err) => {
+				console.log(err);
+				toast.error(err.message);
+			});
+	};
+
+	const handleUpdateUserProfile = (name, photoURL) => {
+		const profile = {
+			displayName: name,
+			photoURL: photoURL,
+		};
+
+		updateUserProfile(profile)
+			.then(() => {})
+			.catch((err) => console.log(err));
 	};
 
 	return (
@@ -48,6 +76,7 @@ const Register = () => {
 						<input
 							type="email"
 							name="email"
+							required
 							placeholder="Email"
 							className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 						/>
@@ -60,6 +89,7 @@ const Register = () => {
 							type="password"
 							name="password"
 							id="password"
+							required
 							placeholder="Password"
 							className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 						/>
@@ -74,18 +104,18 @@ const Register = () => {
 					<div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
 				</div>
 				<div className="flex justify-center space-x-4">
-					<button className="p-3 rounded-sm">
-						<FaGoogle className="w-5 h-5 fill-current" />
+					<button className="p-3 rounded-sm hover:scale-125 duration-500">
+						<FaGoogle className="w-7 h-7 fill-current" />
 					</button>
 
-					<button className="p-3 rounded-sm">
-						<FaGithub className="w-5 h-5 fill-current" />
+					<button className="p-3 rounded-sm hover:scale-125 duration-500">
+						<FaGithub className="w-7 h-7 fill-current" />
 					</button>
 				</div>
 				<p className="text-xs text-center sm:px-6 dark:text-gray-400">
 					Already have an account?
-					<Link to={'/login'} className="underline dark:text-gray-100">
-						Sign up
+					<Link to={'/login'} className="underline dark:text-gray-100 ml-2">
+						Login
 					</Link>
 				</p>
 			</div>

@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.jpg';
 import { FaBars, FaMoon, FaSun, FaTimes } from 'react-icons/fa';
 // import './header.css'
+import { AuthContext } from './../../Contexts/UserContextProvider';
 
 const Header = () => {
+	const { user, logOut } = useContext(AuthContext);
+
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [darkMode, setDarkMode] = useState(true);
 
@@ -16,26 +19,20 @@ const Header = () => {
 		<div>
 			<div className="px-4 py-5 mx-auto  md:px-24 lg:px-10">
 				<div className="relative flex items-center justify-between">
-					<a href="/" aria-label="Company" title="Company" className="inline-flex items-center">
+					<Link to="/" className="inline-flex items-center">
 						<img src={logo} alt="" className="w-10 h-10 rounded-full" />
 						<span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
 							Epic! Coding
 						</span>
-					</a>
+					</Link>
 					<ul className=" items-center hidden space-x-8 lg:flex">
 						<li>
-							
-								<NavLink
-									className={({ isActive }) => (isActive ? 'active' : undefined)}
-									to={`/courses`}>
-									Courses
-								</NavLink>
-							
+							<NavLink className={`font-medium`} to={`/courses`}>
+								Courses
+							</NavLink>
 						</li>
 						<li>
-							<NavLink
-								className={({ isActive }) => (isActive ? 'active' : undefined)}
-								to={`/`}>
+							<NavLink className={({ isActive }) => (isActive ? 'active' : undefined)} to={`/`}>
 								FAQ
 							</NavLink>
 						</li>
@@ -53,12 +50,24 @@ const Header = () => {
 						</li>
 
 						<li>
-							<button
-								className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-								aria-label="Login"
-								title="Login">
-								Sign In
-							</button>
+							{user?.uid ? (
+								<Link to={'register'}>
+									<button
+										onClick={logOut}
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+										title="Register">
+										Log Out
+									</button>
+								</Link>
+							) : (
+								<Link to={'login'}>
+									<button
+										className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+										title="Login">
+										Login
+									</button>
+								</Link>
+							)}
 						</li>
 					</ul>
 					<div className="lg:hidden">
