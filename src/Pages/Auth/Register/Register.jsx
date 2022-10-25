@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './register.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/UserContextProvider';
 import toast from 'react-hot-toast';
 
 const Register = () => {
-	const { createUser, updateUserProfile} = useContext(AuthContext);
+	const { createUser, updateUserProfile } = useContext(AuthContext);
 
 	const [errors, setErrors] = useState({
 		password: '',

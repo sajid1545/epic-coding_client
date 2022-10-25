@@ -21,7 +21,7 @@ const Header = () => {
 				<div className="relative flex items-center justify-between">
 					<Link to="/" className="inline-flex items-center">
 						<img src={logo} alt="" className="w-10 h-10 rounded-full" />
-						<span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+						<span className="text-2xl font-extrabold ml-5 text-slate-800 uppercase italic">
 							Epic! Coding
 						</span>
 					</Link>

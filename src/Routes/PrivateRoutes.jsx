@@ -6,7 +6,7 @@ import { Vortex } from 'react-loader-spinner';
 
 const PrivateRoutes = ({ children }) => {
 	const { user, loading } = useContext(AuthContext);
-	 let location = useLocation();
+	const location = useLocation()
 
 	if (loading) {
 		return (
@@ -25,7 +25,7 @@ const PrivateRoutes = ({ children }) => {
 	}
 
 	if (!user) {
-		return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+		return <Navigate to="/login" state={{ from: location }} replace />;
 	}
 	return children;
 };

@@ -10,18 +10,19 @@ const Login = () => {
 
 	const [errors, setError] = useState('');
 
-	const navigate = useNavigate();
 	const location = useLocation();
-
+	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || '/';
 
-	useEffect(() => {
-		if (user) {
-			navigate(from, { replace: true });
-		}
-	}, [user, navigate]);
+	console.log(from);
+	// useEffect(() => {
+	// 	if (user) {
+	// 		navigate(from, { replace: true });
+	// 	}
+	// }, [user, navigate]);
 
 	// users can login if they have already created an account
+	navigate(from, { replace: true });
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -35,8 +36,8 @@ const Login = () => {
 				const user = result.user;
 				console.log(user);
 				form.reset();
+				// navigate(from, { replace: true });
 				toast.success('Success');
-				navigate(from, { replace: true });
 			})
 			.catch((e) => {
 				toast.error(e.message);
@@ -52,7 +53,7 @@ const Login = () => {
 				const user = result.user;
 				console.log(user);
 				toast.success('success');
-				navigate(from, { replace: true });
+				// navigate(from, { replace: true });
 			})
 			.catch((e) => {
 				toast.error(e.message);
@@ -66,9 +67,8 @@ const Login = () => {
 			.then((result) => {
 				const user = result.user;
 				console.log(user);
-
-				toast.success('Success');
-				navigate(from, { replace: true });
+				toast.success('success');
+				// navigate(from, { replace: true });
 			})
 			.catch((e) => {
 				toast.error(e.message);
