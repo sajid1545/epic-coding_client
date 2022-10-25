@@ -47,7 +47,7 @@ const Login = () => {
 				<form novalidate="" action="" className="space-y-8 ng-untouched ng-pristine ng-valid">
 					<div className="space-y-4">
 						<div className="space-y-2">
-							<label for="email" className="block text-sm">
+							<label htmlFor="email" className="block text-sm">
 								Email address
 							</label>
 							<input
@@ -60,7 +60,7 @@ const Login = () => {
 						</div>
 						<div className="space-y-2">
 							<div className="flex justify-between">
-								<label for="password" className="text-sm">
+								<label htmlFor="password" className="text-sm">
 									Password
 								</label>
 								<a
