@@ -3,9 +3,11 @@ import './register.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/UserContextProvider';
 import toast from 'react-hot-toast';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const Register = () => {
 	const { createUser, updateUserProfile } = useContext(AuthContext);
+	const [showPass, setShowPass] = useState(false);
 
 	const [errors, setErrors] = useState({
 		password: '',
@@ -15,8 +17,11 @@ const Register = () => {
 	// password validation
 	const handlePasswordChange = (e) => {
 		const password = e.target.value;
+		const noSymbol = !/[\!\@\#\$\%\^\&\*]{1,}/.test(password);
 		if (password.length < 6) {
 			setErrors({ ...errors, password: 'Must be at least 6 characters' });
+		} else if (noSymbol) {
+			setErrors({ ...errors, password: 'You must use atleast one special character' });
 		} else {
 			setErrors('');
 		}
@@ -59,6 +64,13 @@ const Register = () => {
 			.catch((err) => console.log(err));
 	};
 
+	// toggleShowPassword
+
+	const togglePassword = (e) => {
+		e.preventDefault();
+		setShowPass(!showPass);
+	};
+
 	return (
 		<div className="register-comp p-10 md:p-20 ">
 			<div className="w-full max-w-md mx-auto p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
@@ -98,18 +110,23 @@ const Register = () => {
 							className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 						/>
 					</div>
-					<div className="space-y-1 text-sm">
+					<div className="space-y-1 text-sm relative">
 						<label htmlFor="password" className="block dark:text-gray-400 text-left mb-1">
 							Password
 						</label>
 						<input
-							type="password"
+							type={showPass ? 'text' : 'password'}
 							name="password"
 							onChange={handlePasswordChange}
 							required
 							placeholder="Password"
 							className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 						/>
+						<span
+							className="absolute right-5 cursor-pointer top-10 text-xl text-white"
+							onClick={togglePassword}>
+							{showPass ? <AiFillEye /> : <AiFillEyeInvisible />}
+						</span>
 					</div>
 					{errors.password && <p className="text-red-600">{errors.password}</p>}
 					<button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400 hover:bg-violet-700 duration-500 hover:text-white">

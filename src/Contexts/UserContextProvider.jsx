@@ -17,7 +17,7 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const UserContextProvider = ({ children }) => {
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState({});
 	const [loading, setLoading] = useState(true);
 	const githubProvider = new GithubAuthProvider();
 	const googleProvider = new GoogleAuthProvider();
@@ -29,27 +29,13 @@ const UserContextProvider = ({ children }) => {
 
 	const updateUserProfile = (profile) => {
 		setLoading(true);
-
 		return updateProfile(auth.currentUser, profile);
 	};
 
 	const signIn = (email, password) => {
 		setLoading(true);
-
 		return signInWithEmailAndPassword(auth, email, password);
 	};
-
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			console.log('currentUser', currentUser);
-			setUser(currentUser);
-			setLoading(false);
-		});
-
-		return () => {
-			unsubscribe();
-		};
-	});
 
 	const githubSignIn = () => {
 		setLoading(true);
@@ -65,13 +51,24 @@ const UserContextProvider = ({ children }) => {
 
 	const logOut = () => {
 		setLoading(true);
-
 		return signOut(auth);
 	};
 
 	const forgotPassword = (email) => {
+		setLoading(true);
 		return sendPasswordResetEmail(auth, email);
 	};
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+			console.log('currentUser', currentUser);
+			setUser(currentUser);
+			setLoading(false);
+		});
+
+		return () => {
+			unsubscribe();
+		};
+	},[]);
 
 	const authInfo = {
 		createUser,
@@ -83,7 +80,7 @@ const UserContextProvider = ({ children }) => {
 		googleSignIn,
 		loading,
 		setLoading,
-		forgotPassword
+		forgotPassword,
 	};
 
 	return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

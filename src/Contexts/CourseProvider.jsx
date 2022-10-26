@@ -3,15 +3,9 @@ import React, { createContext, useEffect, useState } from 'react';
 export const CourseContext = createContext();
 
 const CourseProvider = ({ children }) => {
-    const [courses, setCourses] = useState([]);
-    
-	const [selectedCourse, setSelectedCourse] = useState([]);
-	
-	const [rightSideCourse,setRightSideCourse] = useState([])
+	const [courses, setCourses] = useState([]);
 
-	const handleRightSideCourse = (courseSelected) => {
-		console.log(courseSelected);
-	}
+	const [selectedCourse, setSelectedCourse] = useState([]);
 
 	const handleSelectedCourse = (choosedCourse) => {
 		console.log(choosedCourse);
@@ -24,7 +18,7 @@ const CourseProvider = ({ children }) => {
 			.then((data) => setCourses(data));
 	}, []);
 
-	const courseInfo = { courses,handleSelectedCourse,selectedCourse,handleRightSideCourse };
+	const courseInfo = { courses, handleSelectedCourse, selectedCourse };
 
 	return <CourseContext.Provider value={courseInfo}>{children}</CourseContext.Provider>;
 };

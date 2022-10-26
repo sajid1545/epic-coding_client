@@ -18,6 +18,10 @@
 
 5. Signed in user can see there profile picture in the top right corner of the navbar. While hovering over it username can be seen. While registering user can add a profile picture and update its name.
 
+6. User can now reset their password by clicking forget password. User can view their password while typing now for both login and register form.
+
+7. Register form is validated. User must use 6 characters long password and have a special character in it.
+
 #
 
 ## Packages and Technologies used

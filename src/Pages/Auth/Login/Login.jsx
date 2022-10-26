@@ -4,17 +4,19 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './../../../Contexts/UserContextProvider';
 import './Login.css';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const Login = () => {
 	const { signIn, githubSignIn, googleSignIn, forgotPassword, user } = useContext(AuthContext);
 
 	const [errors, setError] = useState('');
 
-	const location = useLocation();
 	const navigate = useNavigate();
+	const location = useLocation();
 	const from = location.state?.from?.pathname || '/';
 
-	navigate(from, { replace: true });
+	const [showPass, setShowPass] = useState(false);
+	const [userEmail, setUserEmail] = useState('');
 
 	// users can login if they have already created an account
 
@@ -30,7 +32,7 @@ const Login = () => {
 				const user = result.user;
 				console.log(user);
 				form.reset();
-				// navigate(from, { replace: true });
+				navigate(from, { replace: true });
 				toast.success('Success');
 			})
 			.catch((e) => {
@@ -44,10 +46,9 @@ const Login = () => {
 	const handleGithubSignIn = () => {
 		githubSignIn()
 			.then((result) => {
-				const user = result.user;
-				console.log(user);
+				console.log(result.user);
 				toast.success('success');
-				// navigate(from, { replace: true });
+				navigate(from, { replace: true });
 			})
 			.catch((e) => {
 				toast.error(e.message);
@@ -59,14 +60,40 @@ const Login = () => {
 	const handleGoogleSignIn = () => {
 		googleSignIn()
 			.then((result) => {
-				const user = result.user;
-				console.log(user);
-				toast.success('success');
-				// navigate(from, { replace: true });
+				console.log(result.user);
+				navigate(from, { replace: true });
+			})
+
+			.catch((e) => {
+				toast.error(e.message);
+			});
+	};
+
+	// handle email
+
+	const handleEmailOnBlur = (e) => {
+		let email = e.target.value;
+		setUserEmail(email);
+	};
+
+	// handle reset password
+
+	const handleForgotPassword = (e) => {
+		e.preventDefault();
+		forgotPassword(userEmail)
+			.then(() => {
+				toast.success('Password reset email sent!');
 			})
 			.catch((e) => {
 				toast.error(e.message);
 			});
+	};
+
+	// toggleShowPassword
+
+	const togglePassword = (e) => {
+		e.preventDefault();
+		setShowPass(!showPass);
 	};
 
 	return (
@@ -90,23 +117,32 @@ const Login = () => {
 							<input
 								type="email"
 								name="email"
+								onBlur={handleEmailOnBlur}
 								placeholder="Email"
 								required
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
 						</div>
-						<div className="space-y-2">
+						<div className="space-y-2 relative">
 							<div className="flex justify-between">
 								<label htmlFor="password" className="text-sm">
 									Password
 								</label>
+								<span
+									onClick={handleForgotPassword}
+									className="text-xs hover:underline cursor-pointer dark:text-red-600">
+									Forgot password?
+								</span>
 							</div>
 							<input
-								type="password"
+								type={showPass ? 'text' : 'password'}
 								name="password"
 								placeholder="Password"
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
+							<span className="absolute right-5 cursor-pointer top-8 text-xl text-white" onClick={togglePassword}>
+								{showPass ? <AiFillEye /> : <AiFillEyeInvisible />}
+							</span>
 						</div>
 					</div>
 					<button
