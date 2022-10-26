@@ -1,12 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FaChessKnight, FaDownload, FaOpencart, FaStar, FaStarHalf } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { CourseContext } from './../../Contexts/CourseProvider';
 import Pdf from 'react-to-pdf';
 import ReactImageMagnify from 'react-image-magnify';
 
 const CourseDetails = () => {
-	const { selectedCourse } = useContext(CourseContext);
+	const { selectedCourse, setSelectedCourse } = useContext(CourseContext);
+
+	useEffect(() => {
+		const data = localStorage.getItem('COURSE');
+		setSelectedCourse(JSON.parse(data));
+	}, []);
 
 	const ref = React.createRef();
 
