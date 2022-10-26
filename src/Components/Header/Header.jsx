@@ -59,7 +59,7 @@ const Header = () => {
 									<Link>
 										<button
 											onClick={logOut}
-											className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+											className="inline-flex items-center justify-center h-12 px-6 font-medium   transition duration-200 rounded shadow-md bg-gradient-to-tr from-gray-900 via-purple-900 to-violet-600  focus:shadow-outline focus:outline-none"
 											title="Log Out">
 											Log Out
 										</button>
@@ -67,7 +67,7 @@ const Header = () => {
 								) : (
 									<Link to={'/login'}>
 										<button
-											className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+											className="inline-flex items-center justify-center h-12 px-6 font-medium  transition duration-200 rounded shadow-md bg-gradient-to-tr from-gray-900 via-purple-900 to-violet-600 focus:shadow-outline focus:outline-none"
 											title="Login">
 											Login
 										</button>
@@ -124,12 +124,12 @@ const Header = () => {
 										<nav className={darkMode ? 'dark-mode' : 'light-mode'}>
 											<ul className="space-y-4">
 												<li onClick={toggleDarkMode} className="cursor-pointer text-xl ">
-													<div className='space-y-4'>
-													{darkMode ? (
-														<FaSun className="h-8 w-8 mx-auto mb-3" />
-													) : (
-														<FaMoon className="w-8 h-8 mx-auto mb-3" />
-													)}
+													<div className="space-y-4">
+														{darkMode ? (
+															<FaSun className="h-8 w-8 mx-auto mb-3" />
+														) : (
+															<FaMoon className="w-8 h-8 mx-auto mb-3" />
+														)}
 													</div>
 												</li>
 												<li>
@@ -172,15 +172,15 @@ const Header = () => {
 														<Link>
 															<button
 																onClick={logOut}
-																className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-																title="Register">
+																className="sign-login inline-flex items-center justify-center h-12 px-6 font-medium   transition duration-200 rounded shadow-md bg-gradient-to-tr from-gray-900 via-purple-900 to-violet-600  focus:shadow-outline focus:outline-none"
+																title="Log Out">
 																Log Out
 															</button>
 														</Link>
 													) : (
-														<Link to={'login'}>
+														<Link to={'/login'}>
 															<button
-																className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+																className="sign-login inline-flex items-center justify-center h-12 px-6 font-medium  transition duration-200 rounded shadow-md bg-gradient-to-tr from-gray-900 via-purple-900 to-violet-600 focus:shadow-outline focus:outline-none"
 																title="Login">
 																Login
 															</button>

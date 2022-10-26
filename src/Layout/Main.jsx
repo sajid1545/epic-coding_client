@@ -5,8 +5,12 @@ import Header from '../Components/Header/Header';
 const Main = () => {
 	return (
 		<div>
-			<Header />
-			<Outlet />
+			<div>
+				<Header />
+			</div>
+			<div>
+				<Outlet />
+			</div>
 		</div>
 	);
 };

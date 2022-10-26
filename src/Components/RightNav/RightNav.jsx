@@ -21,7 +21,7 @@ const RightNav = ({ course,handleSelectedCourse }) => {
 					<div className="flex items-center gap-2 justify-center">
 						<FaStar className="text-xl text-yellow-500" /> <span>{ratings}</span>
 					</div>
-					<Link to={`/courses/${id}`}>
+					<Link to={`/courses/${title}`}>
 						<button
 							onClick={() => handleSelectedCourse(course)}
 							type="button"
