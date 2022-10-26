@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import './Login.css';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const Login = () => {
-	const { signIn, githubSignIn, googleSignIn, forgotPassword, user } = useContext(AuthContext);
+	const { signIn, githubSignIn, googleSignIn, forgotPassword } = useContext(AuthContext);
 
 	const [errors, setError] = useState('');
 
@@ -140,7 +140,9 @@ const Login = () => {
 								placeholder="Password"
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
-							<span className="absolute right-5 cursor-pointer top-8 text-xl text-white" onClick={togglePassword}>
+							<span
+								className="absolute right-5 cursor-pointer top-8 text-xl text-white"
+								onClick={togglePassword}>
 								{showPass ? <AiFillEye /> : <AiFillEyeInvisible />}
 							</span>
 						</div>

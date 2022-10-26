@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
+import { FaBars, FaMoon, FaSun, FaTimes, FaUserAlt } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.jpg';
-import { FaBars, FaMoon, FaSun, FaTimes, FaUserAlt } from 'react-icons/fa';
-import './header.css';
 import { AuthContext } from './../../Contexts/UserContextProvider';
+import './header.css';
 
 const Header = () => {
 	const { user, logOut } = useContext(AuthContext);
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [darkMode, setDarkMode] = useState(false);
+	const [darkMode, setDarkMode] = useState(true);
 
 	function toggleDarkMode() {
 		setDarkMode((prevDarkMode) => !prevDarkMode);
@@ -17,7 +17,7 @@ const Header = () => {
 
 	return (
 		<nav className={darkMode ? 'dark-mode' : 'light-mode'}>
-			<div className="mb-[210px] lg:mb-0 ">
+			<div className="mb-[210px] lg:mb-0 border-2 border-b-black">
 				<div className="px-4 py-5 mx-auto  md:px-24 lg:px-10">
 					<div className="relative flex items-center justify-between">
 						<Link to="/" className="inline-flex items-center">
@@ -46,10 +46,6 @@ const Header = () => {
 								</NavLink>
 							</li>
 
-							{/* <li onClick={toggleDarkMode} className="cursor-pointer text-xl">
-								{darkMode ? <FaSun /> : <FaMoon />}
-							</li> */}
-
 							<li onClick={toggleDarkMode} className="cursor-pointer text-xl">
 								{darkMode ? <FaSun /> : <FaMoon />}
 							</li>
@@ -76,7 +72,7 @@ const Header = () => {
 							</li>
 
 							<li>
-								<Link>
+								<Link to={'user-profile'}>
 									{user?.photoURL ? (
 										<div
 											className="tooltip tooltip-bottom tooltip-info"
@@ -86,7 +82,10 @@ const Header = () => {
 											</div>
 										</div>
 									) : (
-										<FaUserAlt className="w-6 h-6" />
+										<div className="tooltip tooltip-bottom tooltip-info"
+										data-tip={user?.displayName}>
+											<FaUserAlt className="w-6 h-6" />
+										</div>
 									)}
 								</Link>
 							</li>
@@ -152,7 +151,7 @@ const Header = () => {
 													</NavLink>
 												</li>
 												<li>
-													<Link>
+													<Link to={'user-profile'}>
 														{user?.photoURL ? (
 															<div
 																className="tooltip tooltip-bottom tooltip-info"
@@ -172,7 +171,7 @@ const Header = () => {
 														<Link>
 															<button
 																onClick={logOut}
-																className="sign-login inline-flex items-center justify-center h-12 px-6 font-medium   transition duration-200 rounded shadow-md bg-gradient-to-tr from-gray-900 via-purple-900 to-violet-600  focus:shadow-outline focus:outline-none"
+																className=" inline-flex items-center justify-center h-12 px-6 font-medium   transition duration-200 rounded shadow-md bg-gradient-to-tr from-gray-900 via-purple-900 to-violet-600  focus:shadow-outline focus:outline-none"
 																title="Log Out">
 																Log Out
 															</button>

@@ -10,12 +10,13 @@ import FAQ from './../Pages/FAQ/FAQ';
 import Blogs from './../Pages/Blogs/Blogs';
 import PrivateRoutes from './PrivateRoutes';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import UserProfile from '../Pages/UserProfile/UserProfile';
 
 export const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Main />,
-		errorElement:<ErrorPage/>,
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: '/',
@@ -52,6 +53,14 @@ export const router = createBrowserRouter([
 			{
 				path: '/login',
 				element: <Login />,
+			},
+			{
+				path: '/user-profile',
+				element: (
+					<PrivateRoutes>
+						<UserProfile />
+					</PrivateRoutes>
+				),
 			},
 		],
 	},
