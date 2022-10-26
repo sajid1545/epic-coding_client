@@ -138,6 +138,21 @@ const Header = () => {
 														Blog
 													</NavLink>
 												</li>
+												<li>
+													<Link>
+														{user?.photoURL ? (
+															<div
+																className="tooltip tooltip-bottom tooltip-info"
+																data-tip={user?.displayName}>
+																<div className="avatar online w-12 h-12">
+																	<img src={user.photoURL} alt="" className=" rounded-full " />
+																</div>
+															</div>
+														) : (
+															<FaUserAlt className="w-6 h-6" />
+														)}
+													</Link>
+												</li>
 
 												<li>
 													{user?.uid ? (
@@ -159,6 +174,7 @@ const Header = () => {
 														</Link>
 													)}
 												</li>
+												
 											</ul>
 										</nav>
 									</div>

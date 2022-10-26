@@ -14,10 +14,9 @@ const Login = () => {
 	const navigate = useNavigate();
 	const from = location.state?.from?.pathname || '/';
 
-	// const [userEmail, setUserEmail] = useState('');
+	navigate(from, { replace: true });
 
 	// users can login if they have already created an account
-	navigate(from, { replace: true });
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -70,21 +69,6 @@ const Login = () => {
 			});
 	};
 
-	// const handleUserEmailBlur = (e) => {
-	// 	let email = e.target.value;
-	// 	setUserEmail(email);
-	// };
-
-	// const handleForgotPassword = (e) => {
-	// 	forgotPassword(userEmail)
-	// 		.then(() => {
-	// 			toast.success('email sent successfully');
-	// 		})
-	// 		.catch((e) => {
-	// 			toast.error(e.message);
-	// 		});
-	// };
-
 	return (
 		<div className="mb-5 login-comp p-10 md:p-20">
 			<div className="w-full max-w-md mx-auto p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 ">
@@ -107,7 +91,6 @@ const Login = () => {
 								type="email"
 								name="email"
 								placeholder="Email"
-								// onBlur={handleUserEmailBlur}
 								required
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
 							/>
@@ -117,11 +100,6 @@ const Login = () => {
 								<label htmlFor="password" className="text-sm">
 									Password
 								</label>
-								<button
-									// onClick={handleForgotPassword}
-									className="text-xs hover:underline dark:text-gray-400">
-									Forgot password?
-								</button>
 							</div>
 							<input
 								type="password"
