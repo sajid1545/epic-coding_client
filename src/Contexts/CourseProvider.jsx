@@ -9,16 +9,10 @@ const CourseProvider = ({ children }) => {
 
 	useEffect(() => {
 		const data = localStorage.getItem('COURSE');
-		console.log(data);
 		setSelectedCourse(JSON.parse(data));
 	}, []);
 
-	// useEffect(() => {
-	// 	localStorage.setItem('COURSE', JSON.stringify(selectedCourse));
-	// }, [selectedCourse]);
-
 	const handleSelectedCourse = (choosedCourse) => {
-		console.log(choosedCourse);
 		setSelectedCourse(choosedCourse);
 		localStorage.setItem('COURSE', JSON.stringify(choosedCourse));
 	};
@@ -29,7 +23,7 @@ const CourseProvider = ({ children }) => {
 			.then((data) => setCourses(data));
 	}, []);
 
-	const courseInfo = { courses, handleSelectedCourse, selectedCourse,setSelectedCourse };
+	const courseInfo = { courses, handleSelectedCourse, selectedCourse, setSelectedCourse };
 
 	return <CourseContext.Provider value={courseInfo}>{children}</CourseContext.Provider>;
 };

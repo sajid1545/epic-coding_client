@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
 			{
 				path: '/courses/:id',
 				element: <CourseDetails />,
-				loader: ({params})=> fetch(`https://epic-coding-server.vercel.app/courses/${params.id}`)
+				loader: ({ params }) => fetch(`https://epic-coding-server.vercel.app/courses/${params.id}`),
 			},
 			{
 				path: '/checkOut/:id',

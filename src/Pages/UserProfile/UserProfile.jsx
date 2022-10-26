@@ -7,9 +7,9 @@ const UserProfile = () => {
 	const { user } = useContext(AuthContext);
 	return (
         <div className='space-y-10'>
-            <h1 className='text-5xl font-bold'>User Info</h1>
+            <h1 className='text-5xl font-bold mt-5'>User Info</h1>
 			<div className="justify-center  flex items-center flex-col">
-				<div className="max-w-xl mx-auto  items-center p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100 rounded-lg shadow-lg shadow-purple-800">
+				<div className="max-w-xl  mx-auto  items-center p-8 sm:flex sm:space-x-6 dark:bg-gray-900 dark:text-gray-100 rounded-lg shadow-lg shadow-purple-800">
 					<div className="flex-shrink-0 w-full mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
 						{user?.photoURL ? (
 							<img

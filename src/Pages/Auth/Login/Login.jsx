@@ -7,7 +7,8 @@ import './Login.css';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const Login = () => {
-	const { signIn, githubSignIn, googleSignIn, forgotPassword } = useContext(AuthContext);
+	const { signIn, githubSignIn, googleSignIn, forgotPassword, setLoading } =
+		useContext(AuthContext);
 
 	const [errors, setError] = useState('');
 
@@ -38,6 +39,9 @@ const Login = () => {
 			.catch((e) => {
 				toast.error(e.message);
 				setError(e.message);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	};
 

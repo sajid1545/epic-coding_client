@@ -22,26 +22,33 @@ const UserContextProvider = ({ children }) => {
 	const githubProvider = new GithubAuthProvider();
 	const googleProvider = new GoogleAuthProvider();
 
+	// create user
+
 	const createUser = (email, password) => {
 		setLoading(true);
 		return createUserWithEmailAndPassword(auth, email, password);
 	};
 
+	// update user profile
 	const updateUserProfile = (profile) => {
 		setLoading(true);
 		return updateProfile(auth.currentUser, profile);
 	};
 
+	// signIn
 	const signIn = (email, password) => {
 		setLoading(true);
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
+	// login using github
 	const githubSignIn = () => {
 		setLoading(true);
 
 		return signInWithPopup(auth, githubProvider);
 	};
+
+	// login using google
 
 	const googleSignIn = () => {
 		setLoading(true);
@@ -58,6 +65,11 @@ const UserContextProvider = ({ children }) => {
 		setLoading(true);
 		return sendPasswordResetEmail(auth, email);
 	};
+
+	const deleteUser = () => {
+		return deleteUser(auth.currentUser);
+	};
+
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 			console.log('currentUser', currentUser);
@@ -68,7 +80,7 @@ const UserContextProvider = ({ children }) => {
 		return () => {
 			unsubscribe();
 		};
-	},[]);
+	}, []);
 
 	const authInfo = {
 		createUser,
@@ -81,6 +93,7 @@ const UserContextProvider = ({ children }) => {
 		loading,
 		setLoading,
 		forgotPassword,
+		deleteUser
 	};
 
 	return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

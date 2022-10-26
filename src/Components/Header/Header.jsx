@@ -17,7 +17,7 @@ const Header = () => {
 
 	return (
 		<nav className={darkMode ? 'dark-mode' : 'light-mode'}>
-			<div className="mb-[210px] lg:mb-0 border-2 border-b-black">
+			<div className="mb-[210px] lg:mb-0 ">
 				<div className="px-4 py-5 mx-auto  md:px-24 lg:px-10">
 					<div className="relative flex items-center justify-between">
 						<Link to="/" className="inline-flex items-center">
