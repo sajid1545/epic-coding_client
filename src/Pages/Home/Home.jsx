@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import OurServices from '../../Components/OurServices/OurServices';
+import Slider from '../../Components/Slider/Slider';
 
 const Home = () => {
 	return (
@@ -32,6 +33,7 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
+			<Slider />
 			<OurServices />
 		</div>
 	);

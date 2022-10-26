@@ -24,9 +24,11 @@
 
 8. Dark mode toggle button added. User can toggle between dark and light mode.This feature is only available for navbar.
 
+9. In userProfile page user can change display name and profile picture.After changing users name, user profile user should reload the page to see the updated data.This is small bug, I am still working on it.
+
 #
 
-## Packages and Technologies used
+## Packages and Technologies used (Client Side)
 
 1. Taiwind CSS , daisyui (Taiwind component library)
 2. React router dom to route through components
@@ -38,3 +40,11 @@
 8. react-icons --> used as it is easier to work with
 9. react-loader-spinner --> more fancier than normal ones and easily customizable
 10. firebase-authentication ---> firebase allows users to register or login to the app
+
+#
+
+## Packages and Technologies used (Server Side)
+
+1. Nodemon --> to monitor changes while updating
+2. Express js (Node js framework)
+3. Cors --> supports data transfer between servers

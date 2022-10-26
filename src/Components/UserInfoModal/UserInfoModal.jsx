@@ -4,7 +4,7 @@ import { AuthContext } from './../../Contexts/UserContextProvider';
 import { FaEdit } from 'react-icons/fa';
 
 const UserInfoModal = () => {
-	const { user, deleteUser, updateUserProfile } = useContext(AuthContext);
+	const { user, updateUserProfile } = useContext(AuthContext);
 
 	const [userName, setUserName] = useState('');
 	const [userPicture, setUserPicture] = useState('');
@@ -55,7 +55,7 @@ const UserInfoModal = () => {
 				<label
 					htmlFor="my-modal"
 					className="btn btn-wide modal-button btn-primary hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 border-0 hover:scale-110 duration-300">
-					<FaEdit className='mr-3 text-lg' />
+					<FaEdit className="mr-3 text-lg" />
 					Edit Profile
 				</label>
 			</div>
