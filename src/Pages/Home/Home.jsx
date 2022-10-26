@@ -5,7 +5,7 @@ import OurServices from '../../Components/OurServices/OurServices';
 const Home = () => {
 	return (
 		<div className="">
-			<div className="px-0 py-36 mx-auto w-full md:px-24 lg:px-10  lg:py-24 bg-[#111827]">
+			<div className="px-0 py-36 mx-auto w-full md:px-24 lg:px-10  lg:py-48 bg-[#111827]">
 				<div className="max-w-xl sm:mx-auto lg:max-w-2xl py-12">
 					<div className="flex flex-col mb-16 sm:text-center sm:mb-0">
 						<div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">

@@ -9,15 +9,15 @@ const Header = () => {
 	const { user, logOut } = useContext(AuthContext);
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [darkMode, setDarkMode] = useState(true);
+	const [darkMode, setDarkMode] = useState(false);
 
 	function toggleDarkMode() {
 		setDarkMode((prevDarkMode) => !prevDarkMode);
 	}
 
 	return (
-		<nav>
-			<div className="mb-[210px] lg:mb-2 ">
+		<nav className={darkMode ? 'dark-mode' : 'light-mode'}>
+			<div className="mb-[210px] lg:mb-0 ">
 				<div className="px-4 py-5 mx-auto  md:px-24 lg:px-10">
 					<div className="relative flex items-center justify-between">
 						<Link to="/" className="inline-flex items-center">
@@ -46,6 +46,10 @@ const Header = () => {
 								</NavLink>
 							</li>
 
+							{/* <li onClick={toggleDarkMode} className="cursor-pointer text-xl">
+								{darkMode ? <FaSun /> : <FaMoon />}
+							</li> */}
+
 							<li onClick={toggleDarkMode} className="cursor-pointer text-xl">
 								{darkMode ? <FaSun /> : <FaMoon />}
 							</li>
@@ -55,7 +59,7 @@ const Header = () => {
 									<Link>
 										<button
 											onClick={logOut}
-											className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+											className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide  transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
 											title="Log Out">
 											Log Out
 										</button>
@@ -117,8 +121,17 @@ const Header = () => {
 												</button>
 											</div>
 										</div>
-										<nav>
+										<nav className={darkMode ? 'dark-mode' : 'light-mode'}>
 											<ul className="space-y-4">
+												<li onClick={toggleDarkMode} className="cursor-pointer text-xl ">
+													<div className='space-y-4'>
+													{darkMode ? (
+														<FaSun className="h-8 w-8 mx-auto mb-3" />
+													) : (
+														<FaMoon className="w-8 h-8 mx-auto mb-3" />
+													)}
+													</div>
+												</li>
 												<li>
 													<NavLink
 														className={`font-medium ${(isActive) =>
@@ -149,7 +162,7 @@ const Header = () => {
 																</div>
 															</div>
 														) : (
-															<FaUserAlt className="w-6 h-6" />
+															<FaUserAlt className="w-6 h-6 mx-auto" />
 														)}
 													</Link>
 												</li>
@@ -174,7 +187,6 @@ const Header = () => {
 														</Link>
 													)}
 												</li>
-												
 											</ul>
 										</nav>
 									</div>

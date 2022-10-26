@@ -22,6 +22,8 @@
 
 7. Register form is validated. User must use 6 characters long password and have a special character in it.
 
+8. Dark mode toggle button added. User can toggle between dark and light mode.This feature is only available for navbar.
+
 #
 
 ## Packages and Technologies used
