@@ -11,6 +11,7 @@ import Blogs from './../Pages/Blogs/Blogs';
 import PrivateRoutes from './PrivateRoutes';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import UserProfile from '../Pages/UserProfile/UserProfile';
+import Map from '../Components/Map/Map';
 
 export const router = createBrowserRouter([
 	{
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
 						<UserProfile />
 					</PrivateRoutes>
 				),
+			},
+			{
+				path: '/map',
+				element: <Map />,
 			},
 		],
 	},

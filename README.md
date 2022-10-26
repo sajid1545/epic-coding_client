@@ -40,6 +40,9 @@
 8. react-icons --> used as it is easier to work with
 9. react-loader-spinner --> more fancier than normal ones and easily customizable
 10. firebase-authentication ---> firebase allows users to register or login to the app
+11. react-awesome-slider ---> for a fancy slider
+12. react-leaflet ---> for using maps
+13. react-scroll-to-top ---> scroll to the top of the page
 
 #
 
