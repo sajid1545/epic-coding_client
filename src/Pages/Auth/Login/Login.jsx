@@ -65,6 +65,8 @@ const Login = () => {
 		googleSignIn()
 			.then((result) => {
 				console.log(result.user);
+				toast.success('success');
+
 				navigate(from, { replace: true });
 			})
 
