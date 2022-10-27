@@ -27,7 +27,7 @@ const Register = () => {
 		} else if (noSymbol) {
 			setErrors({ ...errors, password: 'You must use atleast one special character' });
 		} else {
-			setErrors('');
+			setErrors({ ...errors, password: '' });
 		}
 	};
 
@@ -66,6 +66,7 @@ const Register = () => {
 			})
 			.catch((e) => {
 				toast.error(e.message);
+				setErrors({ ...errors, general: e.message });
 			});
 	};
 
@@ -79,6 +80,7 @@ const Register = () => {
 			})
 
 			.catch((e) => {
+				setErrors({ ...errors, general: e.message });
 				toast.error(e.message);
 			});
 	};
@@ -93,7 +95,10 @@ const Register = () => {
 
 		updateUserProfile(profile)
 			.then(() => {})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				setErrors({ ...errors, general: err.message });
+				toast.error(err.message);
+			});
 	};
 
 	// toggleShowPassword
@@ -166,7 +171,7 @@ const Register = () => {
 					</button>
 					{errors.general && <p className="text-center text-red-600">{errors.general}</p>}
 				</form>
-				<hr className='border-2'></hr>
+				<hr className="border-2"></hr>
 				<div className="my-6 space-y-4 ">
 					<button
 						onClick={handleGoogleSignIn}
