@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
-import './register.css';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../Contexts/UserContextProvider';
 import toast from 'react-hot-toast';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/UserContextProvider';
+import './register.css';
 
 const Register = () => {
-	const { createUser, updateUserProfile } = useContext(AuthContext);
+	const { createUser, updateUserProfile, githubSignIn, googleSignIn } = useContext(AuthContext);
 	const [showPass, setShowPass] = useState(false);
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || '/';
 
 	const [errors, setErrors] = useState({
 		password: '',
@@ -44,10 +48,38 @@ const Register = () => {
 				toast.success('Registered Successfully');
 				form.reset();
 				handleUpdateUserProfile(name, photoURL);
+				navigate(from, { replace: true });
 			})
 			.catch((err) => {
 				console.log(err);
 				toast.error(err.message);
+				setErrors({ ...errors, general: err.message });
+			});
+	};
+
+	const handleGithubSignIn = () => {
+		githubSignIn()
+			.then((result) => {
+				console.log(result.user);
+				toast.success('success');
+				navigate(from, { replace: true });
+			})
+			.catch((e) => {
+				toast.error(e.message);
+			});
+	};
+
+	// Google signIn Authentication
+
+	const handleGoogleSignIn = () => {
+		googleSignIn()
+			.then((result) => {
+				console.log(result.user);
+				navigate(from, { replace: true });
+			})
+
+			.catch((e) => {
+				toast.error(e.message);
 			});
 	};
 
@@ -134,6 +166,21 @@ const Register = () => {
 					</button>
 					{errors.general && <p className="text-center text-red-600">{errors.general}</p>}
 				</form>
+				<hr className='border-2'></hr>
+				<div className="my-6 space-y-4 ">
+					<button
+						onClick={handleGoogleSignIn}
+						className="flex mt-10 items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
+						<FaGoogle className="w-5 h-5 " />
+						<p>SignIn with Google</p>
+					</button>
+					<button
+						onClick={handleGithubSignIn}
+						className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400 hover:bg-purple-700 duration-500">
+						<FaGithub className="w-6 h-6 " />
+						<p>SignIn with GitHub</p>
+					</button>
+				</div>
 
 				<p className="text-xs text-center sm:px-6 dark:text-gray-400">
 					Already have an account?
