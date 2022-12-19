@@ -16,7 +16,7 @@ const CheckOutCourse = () => {
 	};
 
 	return (
-		<div className="space-y-8 mb-10 bg-gradient-to-r from-gray-800 via-slate-900 to-black p-10 text-white">
+		<div className="space-y-8 mb-24 bg-gradient-to-r from-gray-800 via-slate-900 to-black p-10 text-white">
 			<div className="mt-10 space-y-4	">
 				<h1 className="text-5xl font-bold mb-5">{title}</h1>
 

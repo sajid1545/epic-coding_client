@@ -46,9 +46,9 @@ const Header = () => {
 								</NavLink>
 							</li>
 
-							<li onClick={toggleDarkMode} className="cursor-pointer text-xl">
+							{/* <li onClick={toggleDarkMode} className="cursor-pointer text-xl">
 								{darkMode ? <FaSun /> : <FaMoon />}
-							</li>
+							</li> */}
 
 							<li>
 								{user?.uid ? (
@@ -122,7 +122,7 @@ const Header = () => {
 										</div>
 										<nav className={darkMode ? 'dark-mode' : 'light-mode'}>
 											<ul className="space-y-4">
-												<li onClick={toggleDarkMode} className="cursor-pointer text-xl ">
+												{/* <li onClick={toggleDarkMode} className="cursor-pointer text-xl ">
 													<div className="space-y-4">
 														{darkMode ? (
 															<FaSun className="h-8 w-8 mx-auto mb-3" />
@@ -130,7 +130,7 @@ const Header = () => {
 															<FaMoon className="w-8 h-8 mx-auto mb-3" />
 														)}
 													</div>
-												</li>
+												</li> */}
 												<li>
 													<NavLink
 														className={`font-medium ${(isActive) =>

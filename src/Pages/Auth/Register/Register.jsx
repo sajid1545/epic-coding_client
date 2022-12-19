@@ -48,7 +48,8 @@ const Register = () => {
 				toast.success('Registered Successfully');
 				form.reset();
 				handleUpdateUserProfile(name, photoURL);
-				navigate(from, { replace: true });
+				// navigate(from, { replace: true });
+				navigate('/')
 			})
 			.catch((err) => {
 				console.log(err);
@@ -62,7 +63,8 @@ const Register = () => {
 			.then((result) => {
 				console.log(result.user);
 				toast.success('success');
-				navigate(from, { replace: true });
+				// navigate(from, { replace: true });
+				navigate('/')
 			})
 			.catch((e) => {
 				toast.error(e.message);
@@ -78,7 +80,7 @@ const Register = () => {
 				console.log(result.user);
 				toast.success('success');
 
-				navigate(from, { replace: true });
+				navigate('/')
 			})
 
 			.catch((e) => {

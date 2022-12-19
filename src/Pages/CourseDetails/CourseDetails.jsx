@@ -31,7 +31,7 @@ const CourseDetails = () => {
 
 	return (
 		<div>
-			<div className="max-w-xl mx-auto p-8 rounded-xl shadow-md dark:bg-gray-900 dark:text-gray-100 my-10">
+			<div className="max-w-xl mx-auto p-8 rounded-xl shadow-md bg-gray-900 text-gray-100 my-10">
 				<div className="flex justify-between pb-4 border-bottom">
 					<div className="flex items-center">
 						<span className="px-4 py-1  text-base rounded-full text-purple-900 border border-purple-600 bg-purple-200 ">
@@ -65,16 +65,16 @@ const CourseDetails = () => {
 						/>
 					</div>
 					<div className="space-y-2">
-						<h3 className="text-xl font-semibold dark:text-violet-400">{title}</h3>
+						<h3 className="text-xl font-semibold text-violet-400">{title}</h3>
 
-						<p className="leading-snug  dark:text-gray-400">{about}</p>
+						<p className="leading-snug  text-gray-400">{about}</p>
 						<div className="">
 							<h1 className="text-xl mt-3">
 								Instructor : <span className="text-green-600">{instructor}</span>
 							</h1>
 						</div>
 						<div className="flex justify-center gap-5 flex-col">
-							<h3 className="text-xl   font-semibold dark:text-violet-400">Price : ${price}</h3>
+							<h3 className="text-xl   font-semibold text-violet-400">Price : ${price}</h3>
 							<div className="flex items-center gap-2 justify-center">
 								{ratings > 4 ? (
 									<div
@@ -102,31 +102,31 @@ const CourseDetails = () => {
 
 					<div>
 						<div className="px-4 py-5 border-b rounded-t sm:px-6">
-							<div className="bg-white dark:bg-gray-800 shadow overflow-hidden sm:rounded-md">
+							<div className="bg-white bg-gray-800 shadow overflow-hidden sm:rounded-md">
 								<ul className="divide-y divide-gray-200  ">
 									<li>
-										<div className="block hover:bg-gray-50 dark:hover:bg-gray-900">
+										<div className="block  hover:bg-gray-900">
 											<div className="px-4 py-4 sm:px-6 ">
 												<div className="flex items-center justify-between">
-													<p className="text-md text-gray-700 dark:text-white ">{overview1}</p>
+													<p className="text-md  text-white ">{overview1}</p>
 												</div>
 											</div>
 										</div>
 									</li>
 									<li>
-										<div className="block hover:bg-gray-50 dark:hover:bg-gray-900">
+										<div className="block  hover:bg-gray-900">
 											<div className="px-4 py-4 sm:px-6">
 												<div className="flex items-center justify-between">
-													<p className="text-md text-gray-700 dark:text-white ">{overview2}</p>
+													<p className="text-md  text-white ">{overview2}</p>
 												</div>
 											</div>
 										</div>
 									</li>
 									<li>
-										<div className="block hover:bg-gray-50 dark:hover:bg-gray-900">
+										<div className="block  hover:bg-gray-900">
 											<div className="px-4 py-4 sm:px-6">
 												<div className="flex items-center justify-between">
-													<p className="text-md text-gray-700 dark:text-white ">{overview3}</p>
+													<p className="text-md  text-white ">{overview3}</p>
 												</div>
 											</div>
 										</div>

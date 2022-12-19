@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+import LargeLoader from '../Components/Spinners/LargeLoader';
 
 export const CourseContext = createContext();
 
@@ -6,6 +7,8 @@ const CourseProvider = ({ children }) => {
 	const [courses, setCourses] = useState([]);
 
 	const [selectedCourse, setSelectedCourse] = useState([]);
+
+	const [load, setLoad] = useState(false);
 
 	useEffect(() => {
 		const data = localStorage.getItem('COURSE');
@@ -18,10 +21,18 @@ const CourseProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
+		setLoad(true);
 		fetch('https://epic-coding-server.vercel.app/courses')
 			.then((res) => res.json())
-			.then((data) => setCourses(data));
+			.then((data) => {
+				setCourses(data);
+				setLoad(false);
+			});
 	}, []);
+
+	if (load) {
+		return <LargeLoader/>;
+	}
 
 	const courseInfo = { courses, handleSelectedCourse, selectedCourse, setSelectedCourse };
 
