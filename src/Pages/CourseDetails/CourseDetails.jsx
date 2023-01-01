@@ -102,7 +102,7 @@ const CourseDetails = () => {
 
 					<div>
 						<div className="px-4 py-5 border-b rounded-t sm:px-6">
-							<div className="bg-white bg-gray-800 shadow overflow-hidden sm:rounded-md">
+							<div className=" bg-gray-800 shadow overflow-hidden sm:rounded-md">
 								<ul className="divide-y divide-gray-200  ">
 									<li>
 										<div className="block  hover:bg-gray-900">
